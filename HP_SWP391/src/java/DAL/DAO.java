@@ -162,10 +162,4 @@ public class DAO {
         return uList;
     }
    
-    public static void main(String[] args) {
-        DAO dao = new DAO();
-        for(RequestSkill u : dao.getRequestSkill()){
-            System.out.println(u.toString());
-        }
-    }
 }
