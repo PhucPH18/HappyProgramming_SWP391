@@ -1,3 +1,10 @@
+<%-- 
+    Document   : HomePage
+    Created on : Oct 5, 2022, 9:46:55 AM
+    Author     : DELL
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
