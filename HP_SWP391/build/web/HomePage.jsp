@@ -12,7 +12,6 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -85,6 +84,7 @@
       </nav><!-- .navbar -->
 
       <a href="signin.html" class="get-started-btn">Sign in</a>
+      <a href="SignUp.jsp" class="get-started-btn">Sign Up</a>
 
     </div>
   </header><!-- End Header -->
