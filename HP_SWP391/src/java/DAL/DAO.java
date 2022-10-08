@@ -7,11 +7,14 @@ package DAL;
 import java.util.*;
 import Model.*;
 import java.sql.*;
+import java.sql.Date;
+
 /**
  *
  * @author DELL
  */
 public class DAO {
+
     private ArrayList<MentorProfile> mpList;
     private ArrayList<MentorSkill> msList;
     private ArrayList<Rating> ratingList;
@@ -23,8 +26,6 @@ public class DAO {
     
     private String status;
     private Connection con;
-
-    
     
     public DAO() {
         try {
@@ -41,8 +42,8 @@ public class DAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                mpList.add(new MentorProfile(rs.getInt(1),rs.getInt(2),rs.getString(3),
-                        rs.getString(4),rs.getString(5),rs.getString(6)));
+                mpList.add(new MentorProfile(rs.getInt(1), rs.getInt(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6)));
             }
         } catch (Exception e) {
             status = "Error at read Mentor Profile" + e.getMessage();
@@ -57,8 +58,8 @@ public class DAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                msList.add(new MentorSkill(rs.getInt(1),rs.getInt(2),rs.getInt(3),
-                        rs.getInt(4),rs.getString(5)));
+                msList.add(new MentorSkill(rs.getInt(1), rs.getInt(2), rs.getInt(3),
+                        rs.getInt(4), rs.getString(5)));
             }
         } catch (Exception e) {
             status = "Error at read Mentor Skill" + e.getMessage();
@@ -73,8 +74,8 @@ public class DAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ratingList.add(new Rating(rs.getInt(1),rs.getString(2),rs.getInt(3),
-                        rs.getInt(4),rs.getInt(5)));
+                ratingList.add(new Rating(rs.getInt(1), rs.getString(2), rs.getInt(3),
+                        rs.getInt(4), rs.getInt(5)));
             }
         } catch (Exception e) {
             status = "Error at read Rating" + e.getMessage();
@@ -89,9 +90,9 @@ public class DAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                requestList.add(new Request(rs.getInt(1),rs.getInt(2),rs.getInt(3),
-                        rs.getDate(4),rs.getInt(5),rs.getString(6),
-                        rs.getString(7),rs.getString(8)));
+                requestList.add(new Request(rs.getInt(1), rs.getInt(2), rs.getInt(3),
+                        rs.getDate(4), rs.getInt(5), rs.getString(6),
+                        rs.getString(7), rs.getString(8)));
             }
         } catch (Exception e) {
             status = "Error at read Request" + e.getMessage();
@@ -106,7 +107,7 @@ public class DAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                rsList.add(new RequestSkill(rs.getInt(1),rs.getInt(2),rs.getInt(3)));
+                rsList.add(new RequestSkill(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
             }
         } catch (Exception e) {
             status = "Error at read Request Skill" + e.getMessage();
@@ -121,7 +122,7 @@ public class DAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                scList.add(new SkillCategory(rs.getInt(1),rs.getString(2),rs.getBoolean(3)));
+                scList.add(new SkillCategory(rs.getInt(1), rs.getString(2), rs.getBoolean(3)));
             }
         } catch (Exception e) {
             status = "Error at read Skill Category" + e.getMessage();
@@ -136,8 +137,8 @@ public class DAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                tList.add(new Transaction(rs.getInt(1),rs.getInt(2),rs.getInt(3),
-                rs.getDate(4),rs.getFloat(5),rs.getString(6)));
+                tList.add(new Transaction(rs.getInt(1), rs.getInt(2), rs.getInt(3),
+                        rs.getDate(4), rs.getFloat(5), rs.getString(6)));
             }
         } catch (Exception e) {
             status = "Error at read Transaction" + e.getMessage();
@@ -154,12 +155,35 @@ public class DAO {
             while (rs.next()) {
                 uList.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getBoolean(5), rs.getString(6), rs.getString(7),
-                        rs.getDate(8),rs.getString(9),rs.getBoolean(10),rs.getInt(11)));
+                        rs.getDate(8), rs.getString(9), rs.getBoolean(10), rs.getInt(11)));
             }
         } catch (Exception e) {
             status = "Error at read Users" + e.getMessage();
         }
         return uList;
     }
-   
+    
+    public void CreateUser(int userID, String username, String password, String fullname,
+            boolean gender, String phone, String email, Date dob, String address, boolean status, int role)
+    {
+        String sql = "insert into [User] values(?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userID);
+            ps.setString(2, username);
+            ps.setString(3, password);
+            ps.setString(4, fullname);
+            ps.setBoolean(5, gender);
+            ps.setString(6, phone);
+            ps.setString(7, email);
+            ps.setDate(8, dob);
+            ps.setString(9, address);
+            ps.setBoolean(10, status);
+            ps.setInt(11, role);
+            ps.execute();
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+    
 }
