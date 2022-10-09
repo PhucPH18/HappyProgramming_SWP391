@@ -1,3 +1,9 @@
+<%-- 
+    Document   : HomePage
+    Created on : Oct 5, 2022, 9:46:55 AM
+    Author     : DELL
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
