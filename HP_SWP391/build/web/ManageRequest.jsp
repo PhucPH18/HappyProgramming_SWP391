@@ -60,16 +60,9 @@
                     Management
                 </div>
                 <li class="nav-item active">
-                    <a class="nav-link" href="ManageRequest.jsp">
+                    <a class="nav-link" href="request">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Request</span></a>
-                </li>
-
-                <!-- Nav Item - Tables -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="tables.jsp">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
                 </li>
 
                 <!-- Divider -->
@@ -337,15 +330,15 @@
                                                         </c:choose>
                                                     </td>
                                                     <td>
-                                                        <%--<c:if test="${o.status==0}">--%>
+                                                        <c:if test="${o.status!=1}">
                                                             <a href="approve?requestID=${o.requestID}"><button type="button" class="btn btn-success btn-rounded btn-sm my-0">Approve</button></a>
+                                                        </c:if>
+                                                        <c:if test="${o.status!=2}">
                                                             <a href="deny?requestID=${o.requestID}"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Deny</button></a>
-                                                        <%--</c:if>--%>
-
+                                                        </c:if>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
-
                                         </tbody>
                                     </table>
                                 </div>
