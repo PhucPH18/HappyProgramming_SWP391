@@ -4,9 +4,17 @@
         <servlet-name>SignUpControl</servlet-name>
         <servlet-class>Controller.SignUpControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserVerify</servlet-name>
+        <servlet-class>Controller.UserVerify</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserVerify</servlet-name>
+        <url-pattern>/UserVerify</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

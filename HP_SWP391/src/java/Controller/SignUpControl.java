@@ -6,12 +6,14 @@ package Controller;
 
 import DAL.DAO;
 import Model.User;
+import Model.sendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -90,20 +92,46 @@ public class SignUpControl extends HttpServlet {
             doGet(request, response);
         } else {
             DAO dao = new DAO();
-            User us = null;
+            User us1 = null;
+            User us2 = null;
             ArrayList<User> listU = dao.getUser();
             for (User u : listU) {
                 if (u.getUsername().trim().equals(username)) {
-                    us = u;
+                    us1 = u;
+                }
+                if (u.getEmail().trim().equals(email)) {
+                    us2 = u;
                 }
             }
             int id = listU.size() + 1;
-            if (us == null) {
-                dao.CreateUser(id, username, password, fullName, gender, phone, email, dob, address, false, 0);
-                response.sendRedirect("HomePage.jsp");
-            } else {
+            if (us1 != null) {
                 request.setAttribute("alert", "Username exist, please try again!");
                 doGet(request, response);
+            }
+            if (us2 != null) {
+                request.setAttribute("alert", "Email exist, please try again!");
+                doGet(request, response);
+            } else {
+                dao.CreateUser(id, username, password, fullName, gender, phone, email, dob, address, false, 0);
+
+                String code = sendEmail.getRandom();
+
+                boolean test = sendEmail.sendEmail(email, code);
+                if (test) {
+                    HttpSession session = request.getSession();
+                    if (session.getAttribute("verifying") != null) {
+                        session.removeAttribute("verifying");
+                    }
+                    session.setAttribute("verifying", code);
+                    if (session.getAttribute("verifyingUsername") != null) {
+                        session.removeAttribute("verifyingUsername");
+                    }
+                    session.setAttribute("verifyingUsername", username);
+                    request.getRequestDispatcher("Verify.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("alert", "Error at sending email!");
+                    doGet(request, response);
+                }
             }
         }
     }

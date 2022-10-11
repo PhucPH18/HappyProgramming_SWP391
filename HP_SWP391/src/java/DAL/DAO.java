@@ -212,4 +212,15 @@ public class DAO {
         }
     }
     
+    public void VerifyUser(String username){
+        String sql = "update [User] set status = 1 where username = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,username);
+            ps.execute();
+        } catch (Exception e) {
+            status = "Error at VerifyUser " + e.getMessage();
+        }
+    }
+    
 }
