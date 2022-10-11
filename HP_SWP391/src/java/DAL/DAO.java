@@ -163,6 +163,32 @@ public class DAO {
         return uList;
     }
     
+    public User login(String user, String pass) {
+        String sql = "select * from [User] where username = ? and password = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return new User(rs.getInt(1), 
+                        rs.getString(2), 
+                        rs.getString(3), 
+                        rs.getString(4), 
+                        rs.getBoolean(5), 
+                        rs.getString(6), 
+                        rs.getString(7), 
+                        rs.getDate(8), 
+                        rs.getString(9), 
+                        rs.getBoolean(10), 
+                        rs.getInt(11));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
     public void CreateUser(int userID, String username, String password, String fullname,
             boolean gender, String phone, String email, Date dob, String address, boolean status, int role)
     {
@@ -183,6 +209,17 @@ public class DAO {
             ps.execute();
         } catch (Exception e) {
             e.getMessage();
+        }
+    }
+    
+    public void VerifyUser(String username){
+        String sql = "update [User] set status = 1 where username = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,username);
+            ps.execute();
+        } catch (Exception e) {
+            status = "Error at VerifyUser " + e.getMessage();
         }
     }
     
