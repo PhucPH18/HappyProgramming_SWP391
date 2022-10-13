@@ -111,7 +111,8 @@ public class SignUpControl extends HttpServlet {
             if (us2 != null) {
                 request.setAttribute("alert", "Email exist, please try again!");
                 doGet(request, response);
-            } else {
+            }
+            if (us1 == null && us2 == null) {
                 dao.CreateUser(id, username, password, fullName, gender, phone, email, dob, address, false, 0);
 
                 String code = sendEmail.getRandom();
