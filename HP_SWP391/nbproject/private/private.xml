@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Model/sendEmail.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Model/User.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/SignUp.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/Login.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/HomePage.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/UserVerify.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/DAL/DAO.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/SignUpControl.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/Verify.jsp</file>
-
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/AdminPage.java</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/web/WEB-INF/web.xml</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/web/Admin.jsp</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/web/ManageRequest.jsp</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/RequestControl.java</file>
         </group>
     </open-files>
 </project-private>

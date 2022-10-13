@@ -223,4 +223,38 @@ public class DAO {
         }
     }
     
+    public ArrayList<Request> getRequestByID() {
+        requestList = new ArrayList<>();
+        String sql = "select a.requestID, a.status, a.title, b.username from Request a join [dbo].[User] b on menteeID=ID";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                requestList.add(new Request(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return requestList;
+    }
+    
+    public void approveRequest (String requestID){
+        String sql = "update Request set status='1' where requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, requestID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void denyRequest (String requestID){
+        String sql = "update Request set status='2' where requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, requestID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }
