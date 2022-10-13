@@ -84,7 +84,8 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="signin.html" class="get-started-btn">Sign in</a>
+      <a href="login.jsp" class="get-started-btn">Sign In</a>
+      <a href="SignUp.jsp" class="get-started-btn">Sign Up</a>
 
     </div>
   </header><!-- End Header -->
@@ -93,7 +94,7 @@
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
       <h1>Learning Today,<br>Leading Tomorrow</h1>
-      <a href="signin.html" class="btn-get-started">Sign in</a>
+      <a href="login.jsp" class="btn-get-started">Sign in</a>
     </div>
   </section><!-- End Hero -->
 

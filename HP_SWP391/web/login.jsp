@@ -31,7 +31,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
-                            <h5 class="mb-4 text-center" style="color: red">${error}</h5>
+                            <h5 class="mb-4 text-center" style="color: white">${error}</h5>
                             <form action="login" method="post" class="signin-form">
                                 <div class="form-group">
                                     <input type="text" name="user" class="form-control" placeholder="Username" required>
