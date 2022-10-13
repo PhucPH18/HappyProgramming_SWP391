@@ -89,7 +89,7 @@
                     <a href="logout" class="get-started-btn"> Log out</a>
                 </c:if>
                 <c:if test="${sessionScope.active==null}">
-                    <a href="login.jsp" class="get-started-btn">Sign in</a>
+                    <a href="Login.jsp" class="get-started-btn">Sign in</a>
                     <a href="SignUp.jsp" class="get-started-btn">Sign Up</a>
                 </c:if>
 
@@ -100,7 +100,7 @@
         <section id="hero" class="d-flex justify-content-center align-items-center">
             <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
                 <h1>Learning Today,<br>Leading Tomorrow</h1>
-                <a href="signin.html" class="btn-get-started">Sign in</a>
+                <a href="Login.jsp" class="btn-get-started">Sign in</a>
             </div>
         </section><!-- End Hero -->
 

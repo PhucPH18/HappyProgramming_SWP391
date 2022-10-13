@@ -25,13 +25,12 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">
-                        <h2 class="heading-section">Getting Started</h2>
+                        <h2 class="heading-section">Sign In</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
-                            <h3 class="mb-4 text-center">Have an account?</h3>
                             <h5 class="mb-4 text-center" style="color: red">${error}</h5>
                             <form action="login" method="post" class="signin-form">
                                 <div class="form-group">
@@ -55,8 +54,12 @@
                                         <a href="#" style="color: #fff">Forgot Password</a>
                                     </div>
                                 </div>
+                                <div class="form-input" style="text-align: center;margin-top: 50px;font-size: 23px">
+                                    Do not have an account?<a href="SignUp.jsp"> Sign Up    </a><br>
+                                    Or return to <a href="HomePage.jsp">Home Page</a>
+                                </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
