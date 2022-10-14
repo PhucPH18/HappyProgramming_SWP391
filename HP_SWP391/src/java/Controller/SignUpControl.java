@@ -113,7 +113,7 @@ public class SignUpControl extends HttpServlet {
                 doGet(request, response);
             }
             if (us1 == null && us2 == null) {
-                dao.CreateUser(id, username, password, fullName, gender, phone, email, dob, address, false, 0);
+                dao.CreateUser(id, username, password, fullName, gender, phone, email, dob, address, false, 1);
 
                 String code = sendEmail.getRandom();
 

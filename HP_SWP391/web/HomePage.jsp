@@ -100,7 +100,9 @@
         <section id="hero" class="d-flex justify-content-center align-items-center">
             <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
                 <h1>Learning Today,<br>Leading Tomorrow</h1>
-                <a href="login.jsp" class="btn-get-started">Sign in</a>
+                <c:if test="${sessionScope.active==null}">
+                    <a href="login.jsp" class="get-started-btn">Sign in</a>
+                </c:if>
             </div>
         </section><!-- End Hero -->
 
