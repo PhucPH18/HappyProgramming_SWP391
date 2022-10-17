@@ -24,6 +24,30 @@
         <servlet-name>DenyRequest</servlet-name>
         <servlet-class>Controller.DenyRequest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageSkill</servlet-name>
+        <servlet-class>Controller.ManageSkill<servlet-name>ManageSkill</servlet-name></servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SkillCategoryControl</servlet-name>
+        <servlet-class>Controller.SkillCategoryControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Skill_delete</servlet-name>
+        <servlet-class>Controller.Skill_delete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserControl</servlet-name>
+        <servlet-class>Controller.UserControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageUser</servlet-name>
+        <servlet-class>ManageUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>User_delete</servlet-name>
+        <servlet-class>Controller.User_delete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -48,11 +72,35 @@
         <servlet-name>DenyRequest</servlet-name>
         <url-pattern>/deny</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserControl</servlet-name>
+        <url-pattern>/UserControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageUser</servlet-name>
+        <url-pattern>/ManageUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>User_delete</servlet-name>
+        <url-pattern>/User_delete</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <servlet-mapping>
+        <servlet-name>ManageSkill</servlet-name>
+        <url-pattern>/ManageSkill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SkillCategoryControl</servlet-name>
+        <url-pattern>/SkillCategoryControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Skill_delete</servlet-name>
+        <url-pattern>/Skill_delete</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>HomePage.jsp</welcome-file>
     </welcome-file-list>

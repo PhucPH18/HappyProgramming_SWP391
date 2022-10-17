@@ -1,4 +1,11 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- 
+    Document   : ManageSkill
+    Created on : Oct 15, 2022, 11:06:21 PM
+    Author     : MSI KATANA
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,7 +77,7 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Skill</span></a>
                 </li>
-
+                
                 <li class="nav-item active">
                     <a class="nav-link" href="UserControl">
                         <i class="fas fa-fw fa-table"></i>
@@ -219,7 +226,7 @@
                                         <div class="font-weight-bold">
                                             <div class="text-truncate">Hi there! I am wondering if you can help me with a
                                                 problem I've been having.</div>
-                                            <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                            <div class="small text-gray-500">Emily Fowler Â· 58m</div>
                                         </div>
                                     </a>
                                     <a class="dropdown-item d-flex align-items-center" href="#">
@@ -231,7 +238,7 @@
                                         <div>
                                             <div class="text-truncate">I have the photos that you ordered last month, how
                                                 would you like them sent to you?</div>
-                                            <div class="small text-gray-500">Jae Chun · 1d</div>
+                                            <div class="small text-gray-500">Jae Chun Â· 1d</div>
                                         </div>
                                     </a>
                                     <a class="dropdown-item d-flex align-items-center" href="#">
@@ -243,7 +250,7 @@
                                         <div>
                                             <div class="text-truncate">Last month's report looks great, I am very happy with
                                                 the progress so far, keep up the good work!</div>
-                                            <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                            <div class="small text-gray-500">Morgan Alvarez Â· 2d</div>
                                         </div>
                                     </a>
                                     <a class="dropdown-item d-flex align-items-center" href="#">
@@ -255,7 +262,7 @@
                                         <div>
                                             <div class="text-truncate">Am I a good boy? The reason I ask is because someone
                                                 told me that people say this to all dogs, even if they aren't good...</div>
-                                            <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                            <div class="small text-gray-500">Chicken the Dog Â· 2w</div>
                                         </div>
                                     </a>
                                     <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -301,126 +308,141 @@
                     <!-- End of Topbar -->
 
                     <!-- Begin Page Content -->
-                    <div class="container-fluid">
+                    <div class="page-heading">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-12 col-md-6 order-md-1 order-last">
+                                    <h1 class="h3 mb-2 text-gray-800">Manage User</h1>
+                                    <p class="text-subtitle text-muted" style="margin-top:50px"></p>
+                                </div>
 
-                        <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Manage Request</h1>
-                        <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                            For more information about DataTables, please visit the <a target="_blank"
-                                href="https://datatables.net">official DataTables documentation</a>.</p>
-                        -->
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">List of requests</h6>
                             </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Username</th>
-                                                <th>Title of request</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <c:forEach items="${listR}" var="o">
-                                                <tr>
-                                                    <td><a href="">${o.requestID}</a></td>
-                                                    <td>${o.username}</td>
-                                                    <td>${o.title}</td>
-                                                    <td><c:choose>
-                                                            <c:when test="${o.status==0}">Waiting
-                                                            </c:when>
-                                                            <c:when test="${o.status==1}">Approved
-                                                            </c:when>
-                                                            <c:otherwise>Denied
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </td>
-                                                    <td>
-                                                        <c:if test="${o.status!=1}">
-                                                            <a href="approve?requestID=${o.requestID}"><button type="button" class="btn btn-success btn-rounded btn-sm my-0">Approve</button></a>
-                                                        </c:if>
-                                                        <c:if test="${o.status!=2}">
-                                                            <a href="deny?requestID=${o.requestID}"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Deny</button></a>
-                                                        </c:if>
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
+                        </div>
+                        <!-- Table head options start -->
+                        <section class="section">
+                            <div class="row" id="table-head">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- table head dark -->
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 text-center">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Username</th>
+                                                            <th>Password</th>
+                                                            <th>Fullname</th>
+                                                            <th>Gender</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                            <th>Date of birth</th>
+                                                            <th>Address</th>
+                                                            <th>Status</th>
+                                                            <th>Role</th>
+                                                            <th>Edit</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <c:forEach items="${listU}" var="l">
+                                                            <tr>
+                                                                <td>${l.userID}</td>
+                                                                <td>${l.username}</td>
+                                                                <td>${l.password}</td>
+                                                                <td>${l.fullname}</td>
+                                                                <td>${l.gender?"Male":"Female"}</td>
+                                                                <td>${l.phone}</td>
+                                                                <td>${l.email}</td>
+                                                                <td>${l.dob}</td>
+                                                                <td>${l.address}</td>
+                                                                <td>${l.status?"Active":"Inactive"}</td>
+                                                                <td>${l.role}</td>
+                                                                <td> <a href="User_update?kid=${l.userID}"><i
+                                                                            class="fas fa-address-book"></i>
+                                                                    </a>
+                                                                    <a href="User_delete?kid=${l.userID}" 
+                                                                       onclick="if (!(confirm('Delete this user?')))
+                                                                                   return false"><i class="fas fa-trash"></i></a></td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </section>
+                        <!-- Table head options end -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary  justify-content-center">
+
+
+                            </ul>
+                        </nav>
 
                     </div>
-                    <!-- /.container-fluid -->
+                    <!-- End of Main Content -->
+
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; Your Website 2020</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
 
                 </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
+                <!-- End of Content Wrapper -->
 
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Page Wrapper -->
 
-        </div>
-        <!-- End of Page Wrapper -->
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.jsp">Logout</a>
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">Ã—</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.jsp">Logout</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="Hieu/vendor/jquery/jquery.min.js"></script>
-        <script src="Hieu/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="Hieu/vendor/jquery/jquery.min.js"></script>
+            <script src="Hieu/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="Hieu/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="Hieu/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="Hieu/js/sb-admin-2.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="Hieu/js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="Hieu/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="Hieu/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+            <!-- Page level plugins -->
+            <script src="Hieu/vendor/datatables/jquery.dataTables.min.js"></script>
+            <script src="Hieu/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="Hieu/js/demo/datatables-demo.js"></script>
+            <!-- Page level custom scripts -->
+            <script src="Hieu/js/demo/datatables-demo.js"></script>
 
     </body>
 
 </html>
+

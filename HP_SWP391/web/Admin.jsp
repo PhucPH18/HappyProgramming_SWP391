@@ -61,6 +61,18 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Request</span></a>
             </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="SkillCategoryControl">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Skill</span></a>
+            </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="UserControl">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>User</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
