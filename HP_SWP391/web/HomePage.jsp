@@ -3,9 +3,8 @@
     Created on : Oct 5, 2022, 9:46:55 AM
     Author     : DELL
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +12,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+        <title>Mentor Bootstrap Template - Index</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -100,7 +100,9 @@
         <section id="hero" class="d-flex justify-content-center align-items-center">
             <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
                 <h1>Learning Today,<br>Leading Tomorrow</h1>
-                <a href="signin.html" class="btn-get-started">Sign in</a>
+                <c:if test="${sessionScope.active==null}">
+                    <a href="login.jsp" class="get-started-btn">Sign in</a>
+                </c:if>
             </div>
         </section><!-- End Hero -->
 

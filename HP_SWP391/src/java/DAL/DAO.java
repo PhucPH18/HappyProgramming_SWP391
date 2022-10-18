@@ -23,10 +23,10 @@ public class DAO {
     private ArrayList<SkillCategory> scList;
     private ArrayList<Transaction> tList;
     private ArrayList<User> uList;
-    
+
     private String status;
     private Connection con;
-    
+
     public DAO() {
         try {
             con = new DBContext().getConnection();
@@ -34,7 +34,7 @@ public class DAO {
             status = "Error connection" + e.getMessage();
         }
     }
-    
+
     public ArrayList<MentorProfile> getMentorProfile() {
         mpList = new ArrayList<>();
         String sql = "select *from MentorProfile";
@@ -50,7 +50,7 @@ public class DAO {
         }
         return mpList;
     }
-    
+
     public ArrayList<MentorSkill> getMentorSkill() {
         msList = new ArrayList<>();
         String sql = "select *from MentorSkill";
@@ -66,7 +66,7 @@ public class DAO {
         }
         return msList;
     }
-    
+
     public ArrayList<Rating> getRating() {
         ratingList = new ArrayList<>();
         String sql = "select *from Rating";
@@ -82,7 +82,7 @@ public class DAO {
         }
         return ratingList;
     }
-    
+
     public ArrayList<Request> getRequest() {
         requestList = new ArrayList<>();
         String sql = "select *from Request";
@@ -99,7 +99,7 @@ public class DAO {
         }
         return requestList;
     }
-    
+
     public ArrayList<RequestSkill> getRequestSkill() {
         rsList = new ArrayList<>();
         String sql = "select *from RequestSkill";
@@ -114,7 +114,7 @@ public class DAO {
         }
         return rsList;
     }
-    
+
     public ArrayList<SkillCategory> getSkillCategory() {
         scList = new ArrayList<>();
         String sql = "select *from SkillCategory";
@@ -129,7 +129,7 @@ public class DAO {
         }
         return scList;
     }
-    
+
     public ArrayList<Transaction> getTransaction() {
         tList = new ArrayList<>();
         String sql = "select *from Transaction";
@@ -145,7 +145,7 @@ public class DAO {
         }
         return tList;
     }
-    
+
     public ArrayList<User> getUser() {
         uList = new ArrayList<>();
         String sql = "select *from [User]";
@@ -162,7 +162,7 @@ public class DAO {
         }
         return uList;
     }
-    
+
     public User login(String user, String pass) {
         String sql = "select * from [User] where username = ? and password = ?";
         try {
@@ -171,16 +171,16 @@ public class DAO {
             ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new User(rs.getInt(1), 
-                        rs.getString(2), 
-                        rs.getString(3), 
-                        rs.getString(4), 
-                        rs.getBoolean(5), 
-                        rs.getString(6), 
-                        rs.getString(7), 
-                        rs.getDate(8), 
-                        rs.getString(9), 
-                        rs.getBoolean(10), 
+                return new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getBoolean(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getString(9),
+                        rs.getBoolean(10),
                         rs.getInt(11));
             }
         } catch (Exception e) {
@@ -188,10 +188,9 @@ public class DAO {
         }
         return null;
     }
-    
+
     public void CreateUser(int userID, String username, String password, String fullname,
-            boolean gender, String phone, String email, Date dob, String address, boolean status, int role)
-    {
+            boolean gender, String phone, String email, Date dob, String address, boolean status, int role) {
         String sql = "insert into [User] values(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -211,5 +210,69 @@ public class DAO {
             e.getMessage();
         }
     }
+
+    public void VerifyUser(String username) {
+        String sql = "update [User] set status = 1 where username = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.execute();
+        } catch (Exception e) {
+            status = "Error at VerifyUser " + e.getMessage();
+        }
+    }
+
+    public ArrayList<Request> getRequestByID() {
+        requestList = new ArrayList<>();
+        String sql = "select a.requestID, a.status, a.title, b.username from Request a join [dbo].[User] b on menteeID=ID";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                requestList.add(new Request(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return requestList;
+    }
+
+    public void approveRequest(String requestID) {
+        String sql = "update Request set status='1' where requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, requestID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void denyRequest(String requestID) {
+        String sql = "update Request set status='2' where requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, requestID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public boolean updatePassword(String newpass, String email) {
+        String sql = "update [User] set password = ? where email = ? ";
+        boolean updated = false;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, newpass.trim());
+            ps.setString(2, email.trim());
+            updated = ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return updated;
+    }
     
+    public static void main(String[] args) {
+        DAO dao = new DAO();
+        dao.updatePassword("123", "khanghg@gamil.com");
+    }
 }

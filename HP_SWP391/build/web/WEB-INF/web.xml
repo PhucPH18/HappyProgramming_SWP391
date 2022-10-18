@@ -4,9 +4,49 @@
         <servlet-name>SignUpControl</servlet-name>
         <servlet-class>Controller.SignUpControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserVerify</servlet-name>
+        <servlet-class>Controller.UserVerify</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminPage</servlet-name>
+        <servlet-class>Controller.AdminPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Request</servlet-name>
+        <servlet-class>Controller.RequestControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApproveRequest</servlet-name>
+        <servlet-class>Controller.ApproveRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DenyRequest</servlet-name>
+        <servlet-class>Controller.DenyRequest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserVerify</servlet-name>
+        <url-pattern>/UserVerify</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminPage</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Request</servlet-name>
+        <url-pattern>/request</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveRequest</servlet-name>
+        <url-pattern>/approve</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DenyRequest</servlet-name>
+        <url-pattern>/deny</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
