@@ -279,7 +279,7 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-    
+
     public void deleteUser(int userID) {
         String sql = "Delete from [User] where ID = ?";
         try {
@@ -288,5 +288,44 @@ public class DAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+    public boolean updatePassword(String newpass, String email) {
+        String sql = "update [User] set password = ? where email = ? ";
+        boolean updated = false;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, newpass.trim());
+            ps.setString(2, email.trim());
+            updated = ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return updated;
+    }
+
+    public User checkEmailExist(String email) {
+        String sql = "select * from [User] where email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getBoolean(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getString(9),
+                        rs.getBoolean(10),
+                        rs.getInt(11));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

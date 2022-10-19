@@ -48,6 +48,10 @@
         <servlet-name>User_delete</servlet-name>
         <servlet-class>Controller.User_delete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewPassword</servlet-name>
+        <servlet-class>Controller.NewPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -83,6 +87,10 @@
     <servlet-mapping>
         <servlet-name>User_delete</servlet-name>
         <url-pattern>/User_delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPassword</servlet-name>
+        <url-pattern>/newpw</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
