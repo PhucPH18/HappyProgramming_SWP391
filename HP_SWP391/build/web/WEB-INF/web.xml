@@ -52,6 +52,10 @@
         <servlet-name>NewPassword</servlet-name>
         <servlet-class>Controller.NewPassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Skill_update</servlet-name>
+        <servlet-class>Controller.Skill_update</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -91,6 +95,10 @@
     <servlet-mapping>
         <servlet-name>NewPassword</servlet-name>
         <url-pattern>/newpw</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Skill_update</servlet-name>
+        <url-pattern>/Skill_update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -72,6 +72,18 @@
                         <span>Request</span></a>
                 </li>
 
+                <li class="nav-item active">
+                    <a class="nav-link" href="SkillCategoryControl">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Skill</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="UserControl">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>User</span></a>
+                </li>
+
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
@@ -336,8 +348,10 @@
                                                                 <label class="col-form-label">Status</label>
                                                             </div>
                                                             <div class="col-lg-10 col-9">
-                                                                <input type="text" id="first-name" class="form-control" name="Status"
-                                                                       placeholder="Status">
+                                                                <select name="Status">
+                                                                    <option value="1">Active</option>
+                                                                    <option value="0">Inactive</option>
+                                                                </select>
                                                             </div>
                                                         </div> 
                                                     </div>                                           

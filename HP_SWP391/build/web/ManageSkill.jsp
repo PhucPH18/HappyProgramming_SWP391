@@ -346,7 +346,7 @@
                                                             <tr>
                                                                 <td class="text-bold-500">${l.skillID}</td>
                                                                 <td>${l.skillName}</td>
-                                                                <td class="text-bold-500">${l.status}</td>
+                                                                <td class="text-bold-500">${l.status?"Active":"Inactive"}</td>
                                                                 <td> <a href="Skill_update?kid=${l.skillID}"><i
                                                                             class="fas fa-address-book"></i>
                                                                     </a>

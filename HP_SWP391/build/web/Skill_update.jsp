@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -308,129 +308,125 @@
                     <!-- End of Topbar -->
 
                     <!-- Begin Page Content -->
-                    <div class="page-heading">
-                        <div class="page-title">
-                            <div class="row">
-                                <div class="col-12 col-md-6 order-md-1 order-last">
-                                    <h1 class="h3 mb-2 text-gray-800">Manage Skill</h1>
-                                    <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                    <a href="Skill_form.jsp">
-                                        <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                            </i>Add new </button>
-                                    </a>
+                    <div class="container-fluid">
 
+                        <!-- Page Heading -->
+                        <h1 class="h3 mb-2 text-gray-800">Manage Skill</h1>
+                        <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                            For more information about DataTables, please visit the <a target="_blank"
+                                href="https://datatables.net">official DataTables documentation</a>.</p>
+                        -->
+                        <!-- DataTales Example -->
+                        <form action="Skill_update" method="post">
+                            <section id="horizontal-input">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Update Skill</h4>
+                                            </div>
 
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- Table head options start -->
-                        <section class="section">
-                            <div class="row" id="table-head">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-content">
-                                            <!-- table head dark -->
-                                            <div class="table-responsive">
-                                                <table class="table mb-0 text-center">
-                                                    <thead class="thead-dark">
-                                                        <tr>
-                                                            <th>Skill ID</th>
-                                                            <th>Skill Name</th>
-                                                            <th>Status</th>
-                                                            <th>Edit</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <c:forEach items="${scList}" var="l">
-                                                            <tr>
-                                                                <td class="text-bold-500">${l.skillID}</td>
-                                                                <td>${l.skillName}</td>
-                                                                <td class="text-bold-500">${l.status?"Active":"Inactive"}</td>
-                                                                <td> <a href="Skill_update?kid=${l.skillID}"><i
-                                                                            class="fas fa-address-book"></i>
-                                                                    </a>
-                                                                    <a href="Skill_delete?kid=${l.skillID}" 
-                                                                       onclick="if (!(confirm('Delete this skill?')))
-                                                                                   return false"><i class="fas fa-trash"></i></a></td>
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </tbody>
-                                                </table>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <input type="hidden" name="kid" value="${skill.skillID}">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row align-items-center">
+                                                            <div class="col-lg-2 col-3">
+                                                                <label class="col-form-label">Skill Name</label>
+                                                            </div>
+                                                            <div class="col-lg-10 col-9">
+                                                                <input type="text" id="helperText" class="form-control" name="SkillName"
+                                                                       placeholder="Skill Name"value="${skill.skillName}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row align-items-center">
+                                                            <div class="col-lg-2 col-3">
+                                                                <label class="col-form-label">Status</label>
+                                                            </div>
+                                                            <div class="col-lg-10 col-9">
+                                                                <select name="Status">
+                                                                    <option value="1">Active</option>
+                                                                    <option value="0">Inactive</option>
+                                                                </select>
+                                                            </div>
+                                                        </div> 
+                                                    </div>                                           
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- Table head options end -->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary  justify-content-center">
-
-
-                            </ul>
-                        </nav>
-
+                            </section>
+                            <button type="submit" id="sweet" class="btn btn-primary" id="sweet" style="padding-left:25px;padding-right: 25px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                                    style="margin-right: 5px;">
+                                </i>Lưu</button>
+                        </form>
                     </div>
-                    <!-- End of Main Content -->
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
+                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- End of Content Wrapper -->
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Page Wrapper -->
+            <!-- End of Content Wrapper -->
 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
+        </div>
+        <!-- End of Page Wrapper -->
 
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.jsp">Logout</a>
-                        </div>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.jsp">Logout</a>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Bootstrap core JavaScript-->
-            <script src="Hieu/vendor/jquery/jquery.min.js"></script>
-            <script src="Hieu/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="Hieu/vendor/jquery/jquery.min.js"></script>
+        <script src="Hieu/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Core plugin JavaScript-->
-            <script src="Hieu/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="Hieu/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            <!-- Custom scripts for all pages-->
-            <script src="Hieu/js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="Hieu/js/sb-admin-2.min.js"></script>
 
-            <!-- Page level plugins -->
-            <script src="Hieu/vendor/datatables/jquery.dataTables.min.js"></script>
-            <script src="Hieu/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="Hieu/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="Hieu/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-            <!-- Page level custom scripts -->
-            <script src="Hieu/js/demo/datatables-demo.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="Hieu/js/demo/datatables-demo.js"></script>
 
     </body>
 

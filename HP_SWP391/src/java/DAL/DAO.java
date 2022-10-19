@@ -280,6 +280,37 @@ public class DAO {
         }
     }
 
+    public void updateSkill(int skillID, String skillName, boolean status) {
+        String sql = "Update SkillCategory\n"
+                + "Set skillName = ?, status = ?\n"
+                + "where skillID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, skillName);
+            ps.setBoolean(2, status);
+            ps.setInt(3, skillID);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+        }
+    }
+
+    public SkillCategory getSkillBySkillID(int skillID) {
+        String sql = "select * from SkillCategory where skillID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, skillID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                SkillCategory skill = new SkillCategory(rs.getInt(1),
+                        rs.getString(2), rs.getBoolean(3)
+                );
+                return skill;
+            }
+        } catch (Exception ex) {
+        }
+        return null;
+    }
+
     public void deleteUser(int userID) {
         String sql = "Delete from [User] where ID = ?";
         try {
