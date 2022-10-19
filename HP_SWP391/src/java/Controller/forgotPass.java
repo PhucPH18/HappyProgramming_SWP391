@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import DAL.DAO;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -73,10 +75,15 @@ public class forgotPass extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DAO dao = new DAO();
         String email = request.getParameter("email");
         String otp;
         HttpSession ses = request.getSession();
-        if (email != null || !email.equals("")) {
+        User u = dao.checkEmailExist(email);
+        if (u==null) {
+            request.setAttribute("message", "Email has not been registered!");
+        }
+        else if (email != null || !email.equals("") || u!=null) {
             Random ran = new Random();
             //otpval = ran.nextInt(1255650);
             int num = ran.nextInt(999999);
@@ -90,6 +97,7 @@ public class forgotPass extends HttpServlet {
             pp.put("mail.smtp.auth", "true");
             pp.put("mail.smtp.port", "465");
             Session session = Session.getDefaultInstance(pp, new javax.mail.Authenticator() {
+                @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication("khanh.zzz.gotosleep@gmail.com", "xrluqnneksldzmqi");
                 }
