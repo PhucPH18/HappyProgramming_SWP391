@@ -11,7 +11,6 @@ import java.sql.Date;
  * @author DELL
  */
 public class Request {
-
     private int requestID;
     private int mentorID;
     private int menteeID;
@@ -24,7 +23,7 @@ public class Request {
 
     public Request() {
     }
-
+    
     public Request(int requestID, int status, String title, String username) {
         this.requestID = requestID;
         this.status = status;
@@ -42,7 +41,7 @@ public class Request {
         this.title = title;
         this.content = content;
     }
-
+    
     public String getUsername() {
         return username;
     }
@@ -119,5 +118,6 @@ public class Request {
     public String toString() {
         return "Request{" + "requestID=" + requestID + ", mentorID=" + mentorID + ", menteeID=" + menteeID + ", date=" + date + ", status=" + status + ", link=" + link + ", title=" + title + ", content=" + content + '}';
     }
-
+    
+    
 }

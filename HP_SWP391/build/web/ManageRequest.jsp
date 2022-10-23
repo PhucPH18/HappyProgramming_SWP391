@@ -13,16 +13,16 @@
         <title>HP Admin - Manage Request</title>
 
         <!-- Custom fonts for this template -->
-        <link href="vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
+        <link href="Hieu/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/sb-admin-2.css" rel="stylesheet">
+        <link href="Hieu/css/sb-admin-2.css" rel="stylesheet">
 
         <!-- Custom styles for this page -->
-        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="Hieu/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
     </head>
 
@@ -63,6 +63,18 @@
                     <a class="nav-link" href="request">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Request</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="SkillCategoryControl">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Skill</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="UserControl">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>User</span></a>
                 </li>
 
                 <!-- Divider -->
@@ -200,7 +212,7 @@
                                     </h6>
                                     <a class="dropdown-item d-flex align-items-center" href="#">
                                         <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                            <img class="rounded-circle" src="Hieu/img/undraw_profile_1.svg"
                                                  alt="...">
                                             <div class="status-indicator bg-success"></div>
                                         </div>
@@ -212,7 +224,7 @@
                                     </a>
                                     <a class="dropdown-item d-flex align-items-center" href="#">
                                         <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                            <img class="rounded-circle" src="Hieu/img/undraw_profile_2.svg"
                                                  alt="...">
                                             <div class="status-indicator"></div>
                                         </div>
@@ -224,7 +236,7 @@
                                     </a>
                                     <a class="dropdown-item d-flex align-items-center" href="#">
                                         <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                            <img class="rounded-circle" src="Hieu/img/undraw_profile_3.svg"
                                                  alt="...">
                                             <div class="status-indicator bg-warning"></div>
                                         </div>
@@ -393,21 +405,21 @@
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="Hieu/vendor/jquery/jquery.min.js"></script>
+        <script src="Hieu/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="Hieu/vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+        <script src="Hieu/js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="Hieu/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="Hieu/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="js/demo/datatables-demo.js"></script>
+        <script src="Hieu/js/demo/datatables-demo.js"></script>
 
     </body>
 
