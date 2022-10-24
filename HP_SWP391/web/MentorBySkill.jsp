@@ -313,7 +313,6 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Avatar</th>
                                                 <th>Fullname</th>
                                                 <th>Introduction</th>
                                                 <th>Gender</th>
@@ -326,9 +325,7 @@
                                         <tbody>
                                             <c:forEach items="${listM}" var="o">
                                                 <tr>
-                                                    <!--<td><img src="${o.avatar}"></td>-->
-                                                    <td>${o.avatar}</td>
-                                                    <td>${o.fullName}</td>
+                                                    <td><a href="#">${o.fullName}</a></td>
                                                     <td>${o.intro}</td>
                                                     <c:if test="${o.gender == true}">
                                                         <td>Male</td>
