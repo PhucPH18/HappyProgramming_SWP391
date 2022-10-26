@@ -103,7 +103,7 @@ public class SignUpControl extends HttpServlet {
                     us2 = u;
                 }
             }
-            int id = listU.size() + 1;
+            int id = listU.size();
             if (us1 != null) {
                 request.setAttribute("alert", "Username exist, please try again!");
                 doGet(request, response);
@@ -113,7 +113,7 @@ public class SignUpControl extends HttpServlet {
                 doGet(request, response);
             }
             if (us1 == null && us2 == null) {
-                dao.CreateUser(id, username, password, fullName, gender, phone, email, dob, address, false, 0);
+                dao.CreateUser(id, username, password, fullName, gender, phone, email, dob, address, false, 1);
 
                 String code = sendEmail.getRandom();
 

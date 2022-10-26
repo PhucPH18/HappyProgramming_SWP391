@@ -65,7 +65,7 @@
                                         <select style="width: 100%;box-sizing: border-box;border: 1px solid #ebebeb;
                                                 padding: 14px 20px;border-radius: 5px;
                                                 font-size: 14px;font-family: 'Poppins';" class="select" name="gender">
-                                            <option value="1">Gender</option>
+                                            <option disabled="disabled" selected="selected">Gender</option>
                                             <option value="m">Male</option>
                                             <option value="f">Female</option>
                                         </select>
@@ -89,7 +89,7 @@
                                         <input type="text" name="address" id="address" />
                                     </div>
                                     <div class="form-input" style="text-align: center;margin-top: 50px;font-size: 23px">
-                                        Already have an account ?<a href="signin.html"> Sign In</a><br>
+                                        Already have an account ?<a href="login.jsp"> Sign In</a><br>
                                         Or return to <a href="HomePage.jsp">Home Page</a>
                                     </div>
                                 </div>

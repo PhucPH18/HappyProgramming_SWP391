@@ -8,6 +8,78 @@
         <servlet-name>UserVerify</servlet-name>
         <servlet-class>Controller.UserVerify</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminPage</servlet-name>
+        <servlet-class>Controller.AdminPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Request</servlet-name>
+        <servlet-class>Controller.RequestControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApproveRequest</servlet-name>
+        <servlet-class>Controller.ApproveRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DenyRequest</servlet-name>
+        <servlet-class>Controller.DenyRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageSkill</servlet-name>
+        <servlet-class>Controller.ManageSkill<servlet-name>ManageSkill</servlet-name></servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SkillCategoryControl</servlet-name>
+        <servlet-class>Controller.SkillCategoryControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Skill_delete</servlet-name>
+        <servlet-class>Controller.Skill_delete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserControl</servlet-name>
+        <servlet-class>Controller.UserControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageUser</servlet-name>
+        <servlet-class>ManageUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>User_delete</servlet-name>
+        <servlet-class>Controller.User_delete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewPassword</servlet-name>
+        <servlet-class>Controller.NewPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Skill_update</servlet-name>
+        <servlet-class>Controller.Skill_update</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateRequest</servlet-name>
+        <servlet-class>Controller.CreateRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadRequest</servlet-name>
+        <servlet-class>Controller.LoadRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteRequest</servlet-name>
+        <servlet-class>Controller.DeleteRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateRequest</servlet-name>
+        <servlet-class>Controller.UpdateRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MenteePage</servlet-name>
+        <servlet-class>Controller.MenteePage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MentorBySkill</servlet-name>
+        <servlet-class>Controller.MentorBySkillControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -16,11 +88,83 @@
         <servlet-name>UserVerify</servlet-name>
         <url-pattern>/UserVerify</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminPage</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Request</servlet-name>
+        <url-pattern>/request</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveRequest</servlet-name>
+        <url-pattern>/approve</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DenyRequest</servlet-name>
+        <url-pattern>/deny</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserControl</servlet-name>
+        <url-pattern>/UserControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageUser</servlet-name>
+        <url-pattern>/ManageUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>User_delete</servlet-name>
+        <url-pattern>/User_delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPassword</servlet-name>
+        <url-pattern>/newpw</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Skill_update</servlet-name>
+        <url-pattern>/Skill_update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateRequest</servlet-name>
+        <url-pattern>/CreateRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadRequest</servlet-name>
+        <url-pattern>/LoadRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRequest</servlet-name>
+        <url-pattern>/DeleteRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateRequest</servlet-name>
+        <url-pattern>/UpdateRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenteePage</servlet-name>
+        <url-pattern>/mentee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MentorBySkill</servlet-name>
+        <url-pattern>/mbs</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <servlet-mapping>
+        <servlet-name>ManageSkill</servlet-name>
+        <url-pattern>/ManageSkill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SkillCategoryControl</servlet-name>
+        <url-pattern>/SkillCategoryControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Skill_delete</servlet-name>
+        <url-pattern>/Skill_delete</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>HomePage.jsp</welcome-file>
     </welcome-file-list>

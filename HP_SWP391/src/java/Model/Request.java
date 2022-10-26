@@ -19,8 +19,16 @@ public class Request {
     private String link;
     private String title;
     private String content;
+    private String username;
 
     public Request() {
+    }
+    
+    public Request(int requestID, int status, String title, String username) {
+        this.requestID = requestID;
+        this.status = status;
+        this.title = title;
+        this.username = username;
     }
 
     public Request(int requestID, int mentorID, int menteeID, Date date, int status, String link, String title, String content) {
@@ -32,6 +40,14 @@ public class Request {
         this.link = link;
         this.title = title;
         this.content = content;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getRequestID() {

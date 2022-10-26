@@ -3,9 +3,8 @@
     Created on : Oct 5, 2022, 9:46:55 AM
     Author     : DELL
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +12,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+        <title>Happy Programming - Home Page</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -49,13 +49,13 @@
         <header id="header" class="fixed-top">
             <div class="container d-flex align-items-center">
 
-                <h1 class="logo me-auto"><a href="index.html">Happy Programming</a></h1>
+                <h1 class="logo me-auto"><a href="HomePage.jsp">Happy Programming</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                <!-- <a href="HomePage.jsp" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
-                        <li><a class="active" href="index.html">Home</a></li>
+                        <li><a class="active" href="HomePage.jsp">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="courses.html">Courses</a></li>
                         <li><a href="trainers.html">Trainers</a></li>
@@ -99,8 +99,7 @@
         <!-- ======= Hero Section ======= -->
         <section id="hero" class="d-flex justify-content-center align-items-center">
             <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-                <h1>Learning Today,<br>Leading Tomorrow</h1>
-                <a href="signin.html" class="btn-get-started">Sign in</a>
+                <h1>Learning Today,<br>Leading Tomorrow</h1><br>
             </div>
         </section><!-- End Hero -->
 
@@ -208,102 +207,13 @@
                 </div>
             </section><!-- End Why Us Section -->
 
-            <!-- ======= Popular Courses Section ======= -->
-            <section id="popular-courses" class="courses">
-                <div class="container" data-aos="fade-up">
-
-                    <div class="section-title">
-                        <h2>Courses</h2>
-                        <p>Popular Courses</p>
-                    </div>
-
-                    <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                            <div class="course-item">
-                                <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-                                <div class="course-content">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h4>Web Development</h4>
-                                        <p class="price">$169</p>
-                                    </div>
-
-                                    <h3><a href="course-details.html">Website Design</a></h3>
-
-                                    <div class="trainer d-flex justify-content-between align-items-center">
-                                        <div class="trainer-profile d-flex align-items-center">
-                                            <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                                            <span>Antonio</span>
-                                        </div>
-                                        <div class="trainer-rank d-flex align-items-center">
-                                            <i class="bx bx-user"></i>&nbsp;50
-                                            &nbsp;&nbsp;
-                                            <i class="bx bx-heart"></i>&nbsp;65
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Course Item-->
-
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                            <div class="course-item">
-                                <img src="assets/img/course-2.jpg" class="img-fluid" alt="...">
-                                <div class="course-content">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h4>Marketing</h4>
-                                        <p class="price">$250</p>
-                                    </div>
-
-                                    <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                                    <div class="trainer d-flex justify-content-between align-items-center">
-                                        <div class="trainer-profile d-flex align-items-center">
-                                            <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
-                                            <span>Lana</span>
-                                        </div>
-                                        <div class="trainer-rank d-flex align-items-center">
-                                            <i class="bx bx-user"></i>&nbsp;35
-                                            &nbsp;&nbsp;
-                                            <i class="bx bx-heart"></i>&nbsp;42
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Course Item-->
-
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-                            <div class="course-item">
-                                <img src="assets/img/course-3.jpg" class="img-fluid" alt="...">
-                                <div class="course-content">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h4>Content</h4>
-                                        <p class="price">$180</p>
-                                    </div>
-
-                                    <h3><a href="course-details.html">Copywriting</a></h3>
-                                    <div class="trainer d-flex justify-content-between align-items-center">
-                                        <div class="trainer-profile d-flex align-items-center">
-                                            <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
-                                            <span>Brandon</span>
-                                        </div>
-                                        <div class="trainer-rank d-flex align-items-center">
-                                            <i class="bx bx-user"></i>&nbsp;20
-                                            &nbsp;&nbsp;
-                                            <i class="bx bx-heart"></i>&nbsp;85
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Course Item-->
-
-                    </div>
-
-                </div>
-            </section><!-- End Popular Courses Section -->
-
             <!-- ======= Trainers Section ======= -->
+
             <section id="trainers" class="trainers">
                 <div class="container" data-aos="fade-up">
-
+                    <div class="section-title">
+                        <p>Popular Mentor</p>
+                    </div>
                     <div class="row" data-aos="zoom-in" data-aos-delay="100">
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="member">
@@ -377,13 +287,13 @@
                     <div class="row">
 
                         <div class="col-lg-3 col-md-6 footer-contact">
-                            <h3>Mentor</h3>
+                            <h3>Contact</h3>
                             <p>
-                                A108 Adam Street <br>
-                                New York, NY 535022<br>
-                                United States <br><br>
-                                <strong>Phone:</strong> +1 5589 55488 55<br>
-                                <strong>Email:</strong> info@example.com<br>
+                                Pham Hong Phuc <br>
+                                FPT University<br>
+                                Ha Noi, Viet Nam<br><br>
+                                <strong>Phone: </strong>0385066816<br>
+                                <strong>Email: </strong>phamhongphuc161202@gmail.com<br>
                             </p>
                         </div>
 
