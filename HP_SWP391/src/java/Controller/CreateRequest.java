@@ -6,6 +6,7 @@ package Controller;
 
 import DAL.DAO;
 import Model.RequestSkill;
+import Model.SkillCategory;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -63,6 +65,9 @@ public class CreateRequest extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
         DAO dao = new DAO();
+        List<SkillCategory> listS = dao.getSkillCategory();
+        request.setAttribute("listS", listS);
+
         request.setAttribute("scList", dao.getSkillCategory());
         request.getRequestDispatcher("RequestForm.jsp").forward(request, response);
 
@@ -82,14 +87,17 @@ public class CreateRequest extends HttpServlet {
 //        processRequest(request, response);
         HttpSession session = request.getSession();
         DAO dao = new DAO();
-        int requestID = dao.getRequest().size();
+        int requestID = dao.getRequest().size()+1;
         Date date = Date.valueOf(java.time.LocalDate.now());
         User u = (User) session.getAttribute("active");
         int menteeID = u.getUserID();
         String title = request.getParameter("title");
         String content = request.getParameter("content");
-        dao.CreateRequest(requestID, 0, menteeID, date, 0, "", title, content);
-        response.sendRedirect("LoadRequest");
+
+        int requestSkillID = dao.getRequestSkill().size() + 1;
+        int skillID = Integer.parseInt(request.getParameter("skill"));
+        dao.CreateRequest(requestID, 0, menteeID, date, 0, "", title, content, requestSkillID,skillID);
+        response.sendRedirect("mentee");
     }
 
     /**

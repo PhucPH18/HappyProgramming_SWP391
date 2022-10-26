@@ -5,22 +5,19 @@
 package Controller;
 
 import DAL.DAO;
-import Model.Request;
-import Model.User;
+import Model.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author DELL
+ * @author levuh
  */
-public class LoadRequest extends HttpServlet {
+public class MentorBySkillControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +30,15 @@ public class LoadRequest extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        String skillID = request.getParameter("sID");
+        DAO dao = new DAO();
+        List<SkillCategory> listS = dao.getSkillCategory();
+        List<MentorBySkill> listM = dao.getMentorBySkill(skillID);
+
+        request.setAttribute("listS", listS);
+        request.setAttribute("listM", listM);
+        request.getRequestDispatcher("MentorBySkill.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,20 +53,7 @@ public class LoadRequest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("active");
-        int menteeID = u.getUserID();
-        DAO dao = new DAO();
-        ArrayList<Request> reqList = new ArrayList<>();
-        for (Request r : dao.getRequest()) {
-            if (r.getMenteeID() == menteeID) {
-                reqList.add(r);
-            }
-        }
-        request.setAttribute("reqList", reqList);
-        request.setAttribute("size", reqList.size());
-        request.getRequestDispatcher("ListRequest.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

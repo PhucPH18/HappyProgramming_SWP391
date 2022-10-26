@@ -60,128 +60,116 @@
                                 </div>
                             </div>
                             <!-- Table head options start -->
-                            <section class="section">
-                                <div class="row" id="table-head">
-                                    <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-content">
-                                                <!-- table head dark -->
-                                                <div class="table-responsive">
-                                                    <table class="table mb-0 text-center">
-                                                        <thead class="thead-dark">
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>Username</th>
-                                                                <th>Password</th>
-                                                                <th>Fullname</th>
-                                                                <th>Gender</th>
-                                                                <th>Phone</th>
-                                                                <th>Email</th>
-                                                                <th>Date of birth</th>
-                                                                <th>Address</th>
-                                                                <th>Status</th>
-                                                                <th>Role</th>
-                                                                <th>Edit</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <c:forEach items="${listU}" var="l">
-                                                            <tr>
-                                                                <td>${l.userID}</td>
-                                                                <td>${l.username}</td>
-                                                                <td>${l.password}</td>
-                                                                <td>${l.fullname}</td>
-                                                                <td>${l.gender?"Male":"Female"}</td>
-                                                                <td>${l.phone}</td>
-                                                                <td>${l.email}</td>
-                                                                <td>${l.dob}</td>
-                                                                <td>${l.address}</td>
-                                                                <td>${l.status?"Active":"Inactive"}</td>
-                                                                <td>${l.role}</td>
-                                                                <td> <a href="User_update?kid=${l.userID}"><i
-                                                                            class="fas fa-address-book"></i>
-                                                                    </a>
-                                                                    <a href="User_delete?kid=${l.userID}" 
-                                                                       onclick="if (!(confirm('Delete this user?')))
-                                                                                   return false"><i class="fas fa-trash"></i></a></td>
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">List of Users</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Username</th>
+                                                    <th>Fullname</th>
+                                                    <th>Gender</th>
+                                                    <th>Phone</th>
+                                                    <th>Email</th>
+                                                    <th>Date of birth</th>
+                                                    <th>Address</th>
+                                                    <th>Status</th>
+                                                    <th>Role</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${listU}" var="l">
+                                                <tr>
+                                                    <td>${l.userID}</td>
+                                                    <td>${l.username}</td>
+                                                    <td>${l.fullname}</td>
+                                                    <td>${l.gender?"Male":"Female"}</td>
+                                                    <td>${l.phone}</td>
+                                                    <td>${l.email}</td>
+                                                    <td>${l.dob}</td>
+                                                    <td>${l.address}</td>
+                                                    <td>${l.status?"Active":"Inactive"}</td>
+                                                    <td>${l.role}</td>
+                                                    <td> <a href="User_update?kid=${l.userID}"><i
+                                                                class="fas fa-address-book"></i>
+                                                        </a>
+                                                        <a href="User_delete?kid=${l.userID}" 
+                                                           onclick="if (!(confirm('Delete this user?')))
+                                                                       return false"><i class="fas fa-trash" style="color: #ff3333"></i></a></td>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                        </section>
-                        <!-- Table head options end -->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary  justify-content-center">
-
-
-                            </ul>
-                        </nav>
-
-                    </div>
-                    <!-- End of Main Content -->
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2020</span>
-                            </div>
                         </div>
-                    </footer>
-                    <!-- End of Footer -->
-
+                    </div>
+                    <!-- /.container-fluid -->
                 </div>
-                <!-- End of Content Wrapper -->
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Page Wrapper -->
+            <!-- End of Content Wrapper -->
 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
+        </div>
+        <!-- End of Page Wrapper -->
 
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.jsp">Logout</a>
-                        </div>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.jsp">Logout</a>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Bootstrap core JavaScript-->
-            <script src="Hieu/vendor/jquery/jquery.min.js"></script>
-            <script src="Hieu/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="Hieu/vendor/jquery/jquery.min.js"></script>
+        <script src="Hieu/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Core plugin JavaScript-->
-            <script src="Hieu/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="Hieu/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            <!-- Custom scripts for all pages-->
-            <script src="Hieu/js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="Hieu/js/sb-admin-2.min.js"></script>
 
-            <!-- Page level plugins -->
-            <script src="Hieu/vendor/datatables/jquery.dataTables.min.js"></script>
-            <script src="Hieu/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="Hieu/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="Hieu/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-            <!-- Page level custom scripts -->
-            <script src="Hieu/js/demo/datatables-demo.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="Hieu/js/demo/datatables-demo.js"></script>
 
     </body>
 

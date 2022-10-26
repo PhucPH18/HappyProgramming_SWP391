@@ -72,6 +72,14 @@
         <servlet-name>UpdateRequest</servlet-name>
         <servlet-class>Controller.UpdateRequest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MenteePage</servlet-name>
+        <servlet-class>Controller.MenteePage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MentorBySkill</servlet-name>
+        <servlet-class>Controller.MentorBySkillControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -131,6 +139,14 @@
     <servlet-mapping>
         <servlet-name>UpdateRequest</servlet-name>
         <url-pattern>/UpdateRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenteePage</servlet-name>
+        <url-pattern>/mentee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MentorBySkill</servlet-name>
+        <url-pattern>/mbs</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

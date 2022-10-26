@@ -23,6 +23,7 @@ public class DAO {
     private ArrayList<SkillCategory> scList;
     private ArrayList<Transaction> tList;
     private ArrayList<User> uList;
+    private ArrayList<MentorBySkill> mbsList;
 
     private Connection con;
     private String status;
@@ -361,34 +362,46 @@ public class DAO {
     }
 
     public void CreateRequest(int requestID, int mentorID, int menteeID, Date date,
-            int status, String link, String title, String content) {
-        String sql = "insert into Request values(?,?,?,?,?,?,?,?)";
+            int status, String link, String title, String content, int requestSkillID, int skillID) {
+        String sql1 = "insert into Request values(?,?,?,?,?,?,?,?)";
+        String sql2 = "insert into RequestSkill values(?,?,?)";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, requestID);
-            ps.setInt(2, mentorID);
-            ps.setInt(3, menteeID);
-            ps.setDate(4, date);
-            ps.setInt(5, status);
-            ps.setString(6, link);
-            ps.setString(7, title);
-            ps.setString(8, content);
-            ps.execute();
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, requestID);
+            ps1.setInt(2, mentorID);
+            ps1.setInt(3, menteeID);
+            ps1.setDate(4, date);
+            ps1.setInt(5, status);
+            ps1.setString(6, link);
+            ps1.setString(7, title);
+            ps1.setString(8, content);
+            ps1.execute();
+            
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, requestSkillID);
+            ps2.setInt(2, requestID);
+            ps2.setInt(3, skillID);
+            ps2.execute();
         } catch (Exception e) {
             e.getMessage();
         }
     }
-    
+
     public void deleteRequest(int requestID) {
-        String sql = "Delete from Request where requestID = ?";
+        String sql1 = "Delete from RequestSkill where requestID = ?";
+        String sql2 = "Delete from Request where requestID = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, requestID);
-            ps.executeUpdate();
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, requestID);
+            ps1.execute();
+            
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, requestID);
+            ps2.execute();
         } catch (Exception e) {
         }
     }
-    
+
     public void updateRequestFromMentee(int requestID, String link, String title, String content) {
         String sql = "Update Request set link = ?, title = ?, content = ? where"
                 + " requestID = ?";
@@ -402,13 +415,39 @@ public class DAO {
         } catch (Exception ex) {
         }
     }
-    
+
+    public ArrayList<MentorBySkill> getMentorBySkill(String sID) {
+        mbsList = new ArrayList<>();
+        String sql = "select a.avatar, b.fullname, a.introduction, b.gender, b.email, a.GitHub, c.yearsOfExp\n"
+                + "from MentorProfile a join [User] b on a.userID=b.ID\n"
+                + "join MentorSkill c on a.mentorID = c.mentorID\n"
+                + "join SkillCategory d on c.skillID=d.skillID \n"
+                + "where d.skillID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, sID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                mbsList.add(new MentorBySkill(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getBoolean(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7)));
+            }
+        } catch (Exception e) {
+            status = "Error at read Skill Category" + e.getMessage();
+        }
+        return mbsList;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        dao.updateRequestFromMentee(5, "", "hihihi", "hahaha");
-        for(Request r: dao.getRequest()){
+        dao.CreateRequest(6, 0, 6, Date.valueOf(java.time.LocalDate.now()), 0, "", "", "", 4,3);
+        for (Request r : dao.getRequest()) {
             System.out.println(r);
         }
     }
-    
+
 }

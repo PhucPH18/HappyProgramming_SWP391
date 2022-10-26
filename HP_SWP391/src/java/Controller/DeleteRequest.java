@@ -58,9 +58,9 @@ public class DeleteRequest extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
         DAO dao = new DAO();
-        int requestID= Integer.parseInt(request.getParameter("rid"));
+        int requestID = Integer.parseInt(request.getParameter("rid"));
         dao.deleteRequest(requestID);
-        response.sendRedirect("LoadRequest");
+        request.getRequestDispatcher("mentee").forward(request, response);
     }
 
     /**

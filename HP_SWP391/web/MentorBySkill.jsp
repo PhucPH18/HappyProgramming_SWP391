@@ -1,13 +1,7 @@
-<%-- 
-    Document   : ManageSkill
-    Created on : Oct 15, 2022, 11:06:21 PM
-    Author     : MSI KATANA
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
+    <%--<%@page buffer="8192kb" autoFlush="true" %>--%>
 
     <head>
 
@@ -17,7 +11,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>HP Admin - Manage Request</title>
+        <title>Happy Programming</title>
 
         <!-- Custom fonts for this template -->
         <link href="Hieu/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -49,58 +43,52 @@
                     <jsp:include page="Topbar.jsp"></jsp:include>
 
                         <!-- Begin Page Content -->
-                        <div class="page-heading">
-                            <div class="page-title">
-                                <div class="row">
-                                    <div class="col-12 col-md-6 order-md-1 order-last">
-                                        <h1 class="h3 mb-2 text-gray-800">Manage User</h1>
-                                        <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                    </div>
+                        <div class="container-fluid">
 
-                                </div>
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-2 text-gray-800">${o.skillName} Mentor</h1>
+
+                        <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                            For more information about DataTables, please visit the <a target="_blank"
+                                href="https://datatables.net">official DataTables documentation</a>.</p>
+                        -->
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">List of mentors</h6>
                             </div>
-                            <!-- Table head options start -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">List of Users</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Fullname</th>
+                                                <th>Introduction</th>
+                                                <th>Gender</th>
+                                                <th>Email</th>
+                                                <th>GitHub</th>
+                                                <th>Years Of Experience</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach items="${listM}" var="o">
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Username</th>
-                                                    <th>Fullname</th>
-                                                    <th>Gender</th>
-                                                    <th>Phone</th>
-                                                    <th>Email</th>
-                                                    <th>Date of birth</th>
-                                                    <th>Address</th>
-                                                    <th>Status</th>
-                                                    <th>Role</th>
-                                                    <th>Edit</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            <c:forEach items="${listU}" var="l">
-                                                <tr>
-                                                    <td>${l.userID}</td>
-                                                    <td>${l.username}</td>
-                                                    <td>${l.fullname}</td>
-                                                    <td>${l.gender?"Male":"Female"}</td>
-                                                    <td>${l.phone}</td>
-                                                    <td>${l.email}</td>
-                                                    <td>${l.dob}</td>
-                                                    <td>${l.address}</td>
-                                                    <td>${l.status?"Active":"Inactive"}</td>
-                                                    <td>${l.role}</td>
-                                                    <td> <a href="User_update?kid=${l.userID}"><i
-                                                                class="fas fa-address-book"></i>
-                                                        </a>
-                                                        <a href="User_delete?kid=${l.userID}" 
-                                                           onclick="if (!(confirm('Delete this user?')))
-                                                                       return false"><i class="fas fa-trash" style="color: #ff3333"></i></a></td>
+                                                    <td><a href="#">${o.fullName}</a></td>
+                                                    <td>${o.intro}</td>
+                                                    <c:if test="${o.gender == true}">
+                                                        <td>Male</td>
+                                                    </c:if>
+                                                    <c:if test="${o.gender != true}">
+                                                        <td>Female</td>
+                                                    </c:if>
+                                                    <td>${o.email}</td>
+                                                    <td>
+                                                        <c:if test="${o.gitHub != null}">
+                                                            <a href="${o.gitHub}">Link</a>
+                                                        </c:if>
+                                                    </td>
+                                                    <td>${o.yearsOfExp}</td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -108,8 +96,10 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <!-- /.container-fluid -->
+
                 </div>
                 <!-- End of Main Content -->
 
@@ -142,7 +132,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">Ã—</span>
+                            <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -174,4 +164,3 @@
     </body>
 
 </html>
-

@@ -93,7 +93,7 @@ public class Login extends HttpServlet {
             HttpSession ses = request.getSession();
             ses.setAttribute("active", u);
             if(u.getRole() == 0)    response.sendRedirect("Admin.jsp");
-            else response.sendRedirect("LoadRequest");
+            else response.sendRedirect("mentee");
         }
         processRequest(request, response);
     }

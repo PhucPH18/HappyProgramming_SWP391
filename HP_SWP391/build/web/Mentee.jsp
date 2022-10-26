@@ -91,8 +91,7 @@
                                                                 class="fas fa-address-book"></i>
                                                         </a>
                                                         <a href="DeleteRequest?rid=${o.requestID}" 
-                                                           onclick="if (!(confirm('Delete this request?')))
-                                                                       return false"><i class="fas fa-trash"></i></a>
+                                                           <i class="fas fa-trash" style="color: #ff3333"></i></a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>

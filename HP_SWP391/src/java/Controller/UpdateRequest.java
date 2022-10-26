@@ -6,12 +6,14 @@ package Controller;
 
 import DAL.DAO;
 import Model.Request;
+import Model.SkillCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -36,7 +38,7 @@ public class UpdateRequest extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateRequest</title>");            
+            out.println("<title>Servlet UpdateRequest</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UpdateRequest at " + request.getContextPath() + "</h1>");
@@ -58,10 +60,12 @@ public class UpdateRequest extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAO dao = new DAO();
+        List<SkillCategory> listS = dao.getSkillCategory();
+        request.setAttribute("listS", listS);
         Request req = new Request();
         int rID = Integer.parseInt(request.getParameter("rid"));
-        for(Request r : dao.getRequest()){
-            if(r.getRequestID() == rID){
+        for (Request r : dao.getRequest()) {
+            if (r.getRequestID() == rID) {
                 req = r;
             }
         }
@@ -87,9 +91,10 @@ public class UpdateRequest extends HttpServlet {
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         dao.updateRequestFromMentee(requestID, link, title, content);
-        request.getRequestDispatcher("LoadRequest").forward(request, response);
+        //        request.getRequestDispatcher("mentee").forward(request, response);
+        response.sendRedirect("mentee");
     }
-    
+
     /**
      * Returns a short description of the servlet.
      *
