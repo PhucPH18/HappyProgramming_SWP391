@@ -24,8 +24,8 @@ public class DAO {
     private ArrayList<Transaction> tList;
     private ArrayList<User> uList;
 
-    private String status;
     private Connection con;
+    private String status;
 
     public DAO() {
         try {
@@ -359,4 +359,56 @@ public class DAO {
         }
         return null;
     }
+
+    public void CreateRequest(int requestID, int mentorID, int menteeID, Date date,
+            int status, String link, String title, String content) {
+        String sql = "insert into Request values(?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, requestID);
+            ps.setInt(2, mentorID);
+            ps.setInt(3, menteeID);
+            ps.setDate(4, date);
+            ps.setInt(5, status);
+            ps.setString(6, link);
+            ps.setString(7, title);
+            ps.setString(8, content);
+            ps.execute();
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+    
+    public void deleteRequest(int requestID) {
+        String sql = "Delete from Request where requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, requestID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void updateRequestFromMentee(int requestID, String link, String title, String content) {
+        String sql = "Update Request set link = ?, title = ?, content = ? where"
+                + " requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, link);
+            ps.setString(2, title);
+            ps.setString(3, content);
+            ps.setInt(4, requestID);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+        }
+    }
+    
+    public static void main(String[] args) {
+        DAO dao = new DAO();
+        dao.updateRequestFromMentee(5, "", "hihihi", "hahaha");
+        for(Request r: dao.getRequest()){
+            System.out.println(r);
+        }
+    }
+    
 }

@@ -56,6 +56,22 @@
         <servlet-name>Skill_update</servlet-name>
         <servlet-class>Controller.Skill_update</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateRequest</servlet-name>
+        <servlet-class>Controller.CreateRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadRequest</servlet-name>
+        <servlet-class>Controller.LoadRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteRequest</servlet-name>
+        <servlet-class>Controller.DeleteRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateRequest</servlet-name>
+        <servlet-class>Controller.UpdateRequest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -99,6 +115,22 @@
     <servlet-mapping>
         <servlet-name>Skill_update</servlet-name>
         <url-pattern>/Skill_update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateRequest</servlet-name>
+        <url-pattern>/CreateRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadRequest</servlet-name>
+        <url-pattern>/LoadRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRequest</servlet-name>
+        <url-pattern>/DeleteRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateRequest</servlet-name>
+        <url-pattern>/UpdateRequest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
