@@ -76,7 +76,7 @@
                                 </li>
                                 <li><a href="#">Drop Down 2</a></li>
                                 <li><a href="#">Drop Down 3</a></li>
-                                <li><a href="#">Drop Down 4</a></li>
+                                <li><a href="rating.jsp">Rating Test</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>

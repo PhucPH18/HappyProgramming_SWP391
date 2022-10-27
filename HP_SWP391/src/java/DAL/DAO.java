@@ -296,6 +296,69 @@ public class DAO {
         return null;
     }
     
+    public void addRating(int id, String comment, int star, int menteeID, int mentorID){
+        String sql = "insert into Rating values (?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            DAO dao = new DAO();
+            ArrayList<Rating> al = dao.getRating();
+            id = al.size()+1;
+            ps.setInt(1, id);
+            ps.setString(2, comment);
+            ps.setInt(3, star);
+            ps.setInt(4, menteeID);
+            ps.setInt(5, mentorID);
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public Rating checkRatingExist(int menteeID, int mentorID){
+        String sql = "select * from Rating where menteeID = ? and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, menteeID);
+            ps.setInt(2, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Rating(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
+    public void updateRating(int star, String comment, int menteeID, int mentorID){
+        String sql = "update Rating set comment = ?, star = ? where menteeID = ? and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, comment);
+            ps.setInt(2, star);
+            ps.setInt(3, menteeID);
+            ps.setInt(4, mentorID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public MentorProfile getMentorByUID(int uid) {
+        String query = "select * from MentorProfile\n" + " where userID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, uid);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return new MentorProfile(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         DAO dao = new DAO();
         dao.updatePassword("123", "khanghg@gamil.com");
