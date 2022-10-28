@@ -17,7 +17,6 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author admin
  */
-@WebServlet(name = "Logout", urlPatterns = {"/logout"})
 public class Logout extends HttpServlet {
 
     /**
@@ -37,7 +36,7 @@ public class Logout extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Logout</title>");            
+            out.println("<title>Servlet Logout</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Logout at " + request.getContextPath() + "</h1>");

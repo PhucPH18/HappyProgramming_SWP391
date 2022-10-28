@@ -103,7 +103,7 @@ public class SignUpControl extends HttpServlet {
                     us2 = u;
                 }
             }
-            int id = listU.size() + 1;
+            int id = listU.size();
             if (us1 != null) {
                 request.setAttribute("alert", "Username exist, please try again!");
                 doGet(request, response);

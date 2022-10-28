@@ -51,7 +51,7 @@
                                         </label>
                                     </div>
                                     <div class="w-50 text-md-right">
-                                        <a href="#" style="color: #fff">Forgot Password</a>
+                                        <a href="forgotPassword.jsp" style="color: #fff">Forgot Password</a>
                                     </div>
                                 </div>
                                 <div class="form-input" style="text-align: center;margin-top: 50px;font-size: 23px">
