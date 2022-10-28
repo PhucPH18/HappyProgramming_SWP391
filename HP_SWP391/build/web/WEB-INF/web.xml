@@ -80,6 +80,26 @@
         <servlet-name>MentorBySkill</servlet-name>
         <servlet-class>Controller.MentorBySkillControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Mentee_update</servlet-name>
+        <servlet-class>Controller.Mentee_update</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>User_update</servlet-name>
+        <servlet-class>Controller.User_update</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Rating</servlet-name>
+        <servlet-class>Controller.Rating</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListRating</servlet-name>
+        <servlet-class>Controller.ListRating</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -147,6 +167,26 @@
     <servlet-mapping>
         <servlet-name>MentorBySkill</servlet-name>
         <url-pattern>/mbs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Mentee_update</servlet-name>
+        <url-pattern>/Mentee_update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>User_update</servlet-name>
+        <url-pattern>/User_update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Rating</servlet-name>
+        <url-pattern>/rating</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListRating</servlet-name>
+        <url-pattern>/ListRating</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

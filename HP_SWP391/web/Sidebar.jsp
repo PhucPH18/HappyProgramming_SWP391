@@ -83,6 +83,12 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>List request</span></a>
         </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="ListRating">
+                <i class="fas fa-fw fa-table"></i>
+                <span>List rating</span></a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

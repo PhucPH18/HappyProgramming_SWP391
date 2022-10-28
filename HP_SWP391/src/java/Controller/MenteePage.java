@@ -34,6 +34,8 @@ public class MenteePage extends HttpServlet {
             throws ServletException, IOException {
         DAO dao = new DAO();
         List<SkillCategory> listS = dao.getSkillCategory();
+        List<User> listU = dao.getUser();
+        List<MentorProfile> listMP = dao.getMentorProfile();
         
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("active");
@@ -47,6 +49,8 @@ public class MenteePage extends HttpServlet {
         request.setAttribute("reqList", reqList);
         request.setAttribute("size", reqList.size());
         request.setAttribute("listS", listS);
+        request.setAttribute("listU", listU);
+        request.setAttribute("listMP", listMP);
         request.getRequestDispatcher("Mentee.jsp").forward(request, response);
     }
 

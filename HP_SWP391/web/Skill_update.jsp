@@ -89,9 +89,15 @@
                                                                 <label class="col-form-label">Status</label>
                                                             </div>
                                                             <div class="col-lg-10 col-9">
-                                                                <select name="Status">
-                                                                    <option value="1">Active</option>
-                                                                    <option value="0">Inactive</option>
+                                                                <select class="form-control" name="Status">
+                                                                    <c:if test="${skill.status}">
+                                                                        <option selected value="1">Active</option>
+                                                                        <option value="0">Inactive</option> 
+                                                                    </c:if>
+                                                                    <c:if test="${!skill.status}">
+                                                                        <option value="1">Active</option>
+                                                                        <option selected value="0">Inactive</option> 
+                                                                    </c:if>
                                                                 </select>
                                                             </div>
                                                         </div> 
@@ -132,25 +138,7 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.jsp">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <jsp:include page="LogOutModal.jsp"></jsp:include>
 
         <!-- Bootstrap core JavaScript-->
         <script src="Hieu/vendor/jquery/jquery.min.js"></script>
