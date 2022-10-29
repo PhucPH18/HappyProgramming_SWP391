@@ -568,7 +568,7 @@ public class DAO {
         }
         return null;
     }
-    
+
     public User getUserByMentorID(int mentorID) {
         String sql1 = "select * from MentorProfile where mentorID = ?";
         String sql2 = "select * from from [User] where ID = ?";
@@ -581,7 +581,7 @@ public class DAO {
                 mp = new MentorProfile(rs1.getInt(1), rs1.getInt(2),
                         rs1.getString(3), rs1.getString(4), rs1.getString(5), rs1.getString(6));
             }
-            
+
             PreparedStatement ps2 = con.prepareStatement(sql2);
             ps2.setInt(2, mp.getUserID());
             ResultSet rs2 = ps2.executeQuery();
@@ -596,12 +596,69 @@ public class DAO {
         return null;
     }
 
+    public int mentorAcceptedReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 1 and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+    
+    public int mentorCanceledReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 2 and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+    
+    public int mentorTotalReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where [status] = 1 and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+    
+    public int mentorCompletedReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3 and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        dao.CreateRequest(6, 0, 6, Date.valueOf(java.time.LocalDate.now()), 0, "", "", "", 4, 3);
-        for (Request r : dao.getRequest()) {
-            System.out.println(r);
-        }
+        System.out.println(dao.mentorCompletedReq(2));
     }
 
 }

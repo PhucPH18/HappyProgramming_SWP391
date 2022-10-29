@@ -20,6 +20,7 @@ public class Request {
     private String title;
     private String content;
     private String username;
+    private int mentorStatus;
 
     public Request() {
     }
@@ -31,6 +32,21 @@ public class Request {
         this.username = username;
     }
 
+    public Request(int requestID, int mentorID, int menteeID, Date date, int status, String link, String title, String content, String username, int mentorStatus) {
+        this.requestID = requestID;
+        this.mentorID = mentorID;
+        this.menteeID = menteeID;
+        this.date = date;
+        this.status = status;
+        this.link = link;
+        this.title = title;
+        this.content = content;
+        this.username = username;
+        this.mentorStatus = mentorStatus;
+    }
+    
+    
+
     public Request(int requestID, int mentorID, int menteeID, Date date, int status, String link, String title, String content) {
         this.requestID = requestID;
         this.mentorID = mentorID;
@@ -40,6 +56,14 @@ public class Request {
         this.link = link;
         this.title = title;
         this.content = content;
+    }
+
+    public int getMentorStatus() {
+        return mentorStatus;
+    }
+
+    public void setMentorStatus(int mentorStatus) {
+        this.mentorStatus = mentorStatus;
     }
     
     public String getUsername() {
