@@ -55,30 +55,9 @@
 
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
-                        <li><a class="active" href="HomePage.jsp">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="courses.html">Courses</a></li>
+                        <li><a class="active" href="home">Home</a></li>
                         <li><a href="trainers.html">Trainers</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
 
-                        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="#">Drop Down 1</a></li>
-                                <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a href="#">Deep Drop Down 1</a></li>
-                                        <li><a href="#">Deep Drop Down 2</a></li>
-                                        <li><a href="#">Deep Drop Down 3</a></li>
-                                        <li><a href="#">Deep Drop Down 4</a></li>
-                                        <li><a href="#">Deep Drop Down 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Drop Down 2</a></li>
-                                <li><a href="#">Drop Down 3</a></li>
-                                <li><a href="#">Drop Down 4</a></li>
-                            </ul>
-                        </li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
@@ -135,24 +114,19 @@
 
                     <div class="row counters">
 
-                        <div class="col-lg-3 col-6 text-center">
-                            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Students</p>
+                        <div class="col-lg-4 col-6 text-center">
+                            <span data-purecounter-start="0" data-purecounter-end="${mentee}" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>Mentees</p>
                         </div>
 
-                        <div class="col-lg-3 col-6 text-center">
-                            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Courses</p>
+                        <div class="col-lg-4 col-6 text-center">
+                            <span data-purecounter-start="0" data-purecounter-end="${skill}" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>Skills</p>
                         </div>
 
-                        <div class="col-lg-3 col-6 text-center">
-                            <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Events</p>
-                        </div>
-
-                        <div class="col-lg-3 col-6 text-center">
-                            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Trainers</p>
+                        <div class="col-lg-4 col-6 text-center">
+                            <span data-purecounter-start="0" data-purecounter-end="${mentor}" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>Mentors</p>
                         </div>
 
                     </div>
@@ -170,9 +144,6 @@
                                 <h3>Why Choose Mentor?</h3>
                                 <p>There are many people who have no direction and lose their roots in some subjects but don't know where to start over. With Happy programming you can find yourself the best mentors who are well trained and have clear certifications that are thoroughly vetted. Thereby they can guide you starting from the most basic steps and bring you absolute satisfaction
                                 </p>
-                                <div class="text-center">
-                                    <a href="about.html" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
@@ -219,8 +190,8 @@
                             <div class="member">
                                 <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
                                 <div class="member-content">
-                                    <h4>Walter White</h4>
-                                    <span>Web Development</span>
+                                    <h4>Le Vu Hieu</h4>
+                                    <span>Fullstack Developer</span>
                                     <p>
                                         Today's failure is tomorrow's victory.
                                     </p>
@@ -239,7 +210,7 @@
                                 <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
                                 <div class="member-content">
                                     <h4>Sarah Jhinson</h4>
-                                    <span>Marketing</span>
+                                    <span>Front-end Developer</span>
                                     <p>
                                         No one has ever said that learning is easy .Remove the word "easy" from your mind to be successful,
                                     </p>
@@ -258,7 +229,7 @@
                                 <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
                                 <div class="member-content">
                                     <h4>William Anderson</h4>
-                                    <span>Content</span>
+                                    <span>Back-end Developer</span>
                                     <p>
                                         One minute of good thought is better than a day of hard work.
                                     </p>
@@ -286,7 +257,7 @@
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-lg-3 col-md-6 footer-contact">
+                        <div class="col-lg-4 col-md-6 footer-contact">
                             <h3>Contact</h3>
                             <p>
                                 Pham Hong Phuc <br>
@@ -297,7 +268,7 @@
                             </p>
                         </div>
 
-                        <div class="col-lg-2 col-md-6 footer-links">
+                        <div class="col-lg-4 col-md-6 footer-links">
                             <h4>Useful Links</h4>
                             <ul>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
@@ -307,18 +278,7 @@
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
                             </ul>
                         </div>
-
-                        <div class="col-lg-3 col-md-6 footer-links">
-                            <h4>Our Services</h4>
-                            <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                            </ul>
-                        </div>
-
+                        
                         <div class="col-lg-4 col-md-6 footer-newsletter">
                             <h4>Join Our Newsletter</h4>
                             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>

@@ -655,10 +655,52 @@ public class DAO {
         }
         return 0;
     }
+    
+    public int getTotalMentee() {
+        String sql = "select COUNT(role) from [User] where [role] = 3 and [status] = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+    
+    public int getTotalMentor() {
+        String sql = "select COUNT(role) from [User] where [role] = 2 and [status] = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+    
+    public int getTotalSkill() {
+        String sql = "select COUNT(status) from SkillCategory where [status] = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
 
     public static void main(String[] args) {
         DAO dao = new DAO();
-        System.out.println(dao.mentorCompletedReq(2));
+        System.out.println(dao.getTotalMentor());
     }
 
 }

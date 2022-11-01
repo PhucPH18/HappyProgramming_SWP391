@@ -3,30 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/Sidebar.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Model/User.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/User_update.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/MentorBySkill.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/ManageUser.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/newPass.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/Skill_form.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/css/rating.css</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/Mentee_update.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/ManageSkill.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/Skill_delete.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/rating.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/Topbar.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/DAL/DAO.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/Mentee_update.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/Skill_update.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/Mentee.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/MenteePage.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/Rating.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/User_update.jsp</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/Skill_update.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/UserControl.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/UpdateRequest.jsp</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/StaticReqController.java</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/src/java/DAL/DAO.java</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/HomeControl.java</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/web/HomePage.jsp</file>
+            <file>file:/D:/FPT%20University/FALL%202022/SWP391/Test/HappyProgramming_SWP391/HP_SWP391/web/Topbar.jsp</file>
         </group>
     </open-files>
 </project-private>

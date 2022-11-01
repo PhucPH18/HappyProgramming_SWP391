@@ -104,6 +104,10 @@
         <servlet-name>StaticReqController</servlet-name>
         <servlet-class>Controller.StaticReqController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeControl</servlet-name>
+        <servlet-class>Controller.HomeControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -195,6 +199,10 @@
     <servlet-mapping>
         <servlet-name>StaticReqController</servlet-name>
         <url-pattern>/staticReq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeControl</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
