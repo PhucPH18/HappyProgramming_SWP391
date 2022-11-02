@@ -24,10 +24,14 @@
             .form-gap {
                 padding-top: 70px;
             }
+            .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+                background-color: #5fcf80 !important;
+                border: 1px solid #5fcf80 !important;
+            }
         </style>
     </head>
 
-    <body>
+    <body class="img js-fullheight" style="background-image: url(images/recoverybg.jpg);">
         <div class="form-gap"></div>
         <div class="container">
             <div class="row">

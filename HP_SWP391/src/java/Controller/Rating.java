@@ -60,7 +60,9 @@ public class Rating extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int mentorID = Integer.parseInt(request.getParameter("mentorID"));
+        request.setAttribute("mentorID", mentorID);
+        request.getRequestDispatcher("rating.jsp").forward(request, response);
     }
 
     /**
@@ -81,10 +83,10 @@ public class Rating extends HttpServlet {
         int menteeID = u.getUserID();
         int star = Integer.parseInt(request.getParameter("rating"));
         String feedback = request.getParameter("feedback");
-        int mentorID = 1; //temporary
+        int mentorID = Integer.parseInt(request.getParameter("mentorID"));
         if (dao.checkRatingExist(menteeID, mentorID)!=null) {
             dao.updateRating(star, feedback, menteeID, mentorID);
-            request.setAttribute("message", "Updated rating successfully!");
+            request.setAttribute("message", "Your rating has been updated!");
         } else if (dao.getMentorByUID(menteeID)!=null) {
             request.setAttribute("message", "You can not rate yourself!");
         } else {

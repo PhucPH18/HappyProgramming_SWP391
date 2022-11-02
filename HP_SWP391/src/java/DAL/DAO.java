@@ -23,9 +23,10 @@ public class DAO {
     private ArrayList<SkillCategory> scList;
     private ArrayList<Transaction> tList;
     private ArrayList<User> uList;
+    private ArrayList<MentorBySkill> mbsList;
 
-    private String status;
     private Connection con;
+    private String status;
 
     public DAO() {
         try {
@@ -257,6 +258,70 @@ public class DAO {
         }
     }
 
+    public void insertSkillCategory(int skillID, String skillName, boolean status) {
+        String sql = "insert  into SkillCategory\n"
+                + "values(?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, skillID);
+            ps.setString(2, skillName);
+            ps.setBoolean(3, status);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void deleteSkill(int SkillID) {
+        String sql = "Delete from SkillCategory where skillID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, SkillID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void updateSkill(int skillID, String skillName, boolean status) {
+        String sql = "Update SkillCategory\n"
+                + "Set skillName = ?, status = ?\n"
+                + "where skillID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, skillName);
+            ps.setBoolean(2, status);
+            ps.setInt(3, skillID);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+        }
+    }
+
+    public SkillCategory getSkillBySkillID(int skillID) {
+        String sql = "select * from SkillCategory where skillID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, skillID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                SkillCategory skill = new SkillCategory(rs.getInt(1),
+                        rs.getString(2), rs.getBoolean(3)
+                );
+                return skill;
+            }
+        } catch (Exception ex) {
+        }
+        return null;
+    }
+
+    public void deleteUser(int userID) {
+        String sql = "Delete from [User] where ID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public boolean updatePassword(String newpass, String email) {
         String sql = "update [User] set password = ? where email = ? ";
         boolean updated = false;
@@ -270,7 +335,7 @@ public class DAO {
         }
         return updated;
     }
-    
+
     public User checkEmailExist(String email) {
         String sql = "select * from [User] where email = ?";
         try {
@@ -278,16 +343,16 @@ public class DAO {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new User(rs.getInt(1), 
-                        rs.getString(2), 
-                        rs.getString(3), 
-                        rs.getString(4), 
-                        rs.getBoolean(5), 
-                        rs.getString(6), 
-                        rs.getString(7), 
-                        rs.getDate(8), 
-                        rs.getString(9), 
-                        rs.getBoolean(10), 
+                return new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getBoolean(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getString(9),
+                        rs.getBoolean(10),
                         rs.getInt(11));
             }
         } catch (Exception e) {
@@ -295,14 +360,159 @@ public class DAO {
         }
         return null;
     }
-    
-    public void addRating(int id, String comment, int star, int menteeID, int mentorID){
+
+    public void CreateRequest(int requestID, int mentorID, int menteeID, Date date,
+            int status, String link, String title, String content, int requestSkillID, int skillID) {
+        String sql1 = "insert into Request values(?,?,?,?,?,?,?,?)";
+        String sql2 = "insert into RequestSkill values(?,?,?)";
+        try {
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, requestID);
+            ps1.setInt(2, mentorID);
+            ps1.setInt(3, menteeID);
+            ps1.setDate(4, date);
+            ps1.setInt(5, status);
+            ps1.setString(6, link);
+            ps1.setString(7, title);
+            ps1.setString(8, content);
+            ps1.execute();
+
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, requestSkillID);
+            ps2.setInt(2, requestID);
+            ps2.setInt(3, skillID);
+            ps2.execute();
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public void deleteRequest(int requestID) {
+        String sql1 = "Delete from RequestSkill where requestID = ?";
+        String sql2 = "Delete from Request where requestID = ?";
+        try {
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, requestID);
+            ps1.execute();
+
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, requestID);
+            ps2.execute();
+        } catch (Exception e) {
+        }
+    }
+
+    public void updateRequestFromMentee(int requestID, String link, String title, String content) {
+        String sql = "Update Request set link = ?, title = ?, content = ? where"
+                + " requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, link);
+            ps.setString(2, title);
+            ps.setString(3, content);
+            ps.setInt(4, requestID);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+        }
+    }
+
+    public ArrayList<MentorBySkill> getMentorBySkill(String sID) {
+        mbsList = new ArrayList<>();
+        String sql = "select a.avatar, b.fullname, a.introduction, b.gender, b.email, a.GitHub, c.yearsOfExp\n"
+                + "from MentorProfile a join [User] b on a.userID=b.ID\n"
+                + "join MentorSkill c on a.mentorID = c.mentorID\n"
+                + "join SkillCategory d on c.skillID=d.skillID \n"
+                + "where d.skillID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, sID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                mbsList.add(new MentorBySkill(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getBoolean(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7)));
+            }
+        } catch (Exception e) {
+            status = "Error at read Skill Category" + e.getMessage();
+        }
+        return mbsList;
+    }
+
+    public User getUserByID(int id) {
+        String sql = "select * from [User] where ID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getBoolean(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getString(9),
+                        rs.getBoolean(10),
+                        rs.getInt(11)
+                );
+                return user;
+            }
+        } catch (Exception ex) {
+        }
+        return null;
+    }
+
+    public void updateUser(int userID, String username, String password, String fullname, boolean gender, String phone, String email, Date dob, String address, boolean status, int role) {
+        String sql = "Update [User]\n"
+                + "Set username = ?, password = ?,fullname =? ,gender=?,phone=?,email=?,dob=?,address=?,status=?,role=?\n"
+                + "where ID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, fullname);
+            ps.setBoolean(4, gender);
+            ps.setString(5, phone);
+            ps.setString(6, email);
+            ps.setDate(7, dob);
+            ps.setString(8, address);
+            ps.setBoolean(9, status);
+            ps.setInt(10, role);
+            ps.setInt(11, userID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception ex) {
+        }
+    }
+
+    public void updateUser(int userID, boolean status, int role) {
+        String sql = "Update [User]\n"
+                + "Set status=?,role=?\n"
+                + "where ID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, status);
+            ps.setInt(2, role);
+            ps.setInt(3, userID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception ex) {
+        }
+    }
+
+    public void addRating(int id, String comment, int star, int menteeID, int mentorID) {
         String sql = "insert into Rating values (?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             DAO dao = new DAO();
             ArrayList<Rating> al = dao.getRating();
-            id = al.size()+1;
+            id = al.size() + 1;
             ps.setInt(1, id);
             ps.setString(2, comment);
             ps.setInt(3, star);
@@ -313,8 +523,8 @@ public class DAO {
             System.out.println(e.getMessage());
         }
     }
-    
-    public Rating checkRatingExist(int menteeID, int mentorID){
+
+    public Rating checkRatingExist(int menteeID, int mentorID) {
         String sql = "select * from Rating where menteeID = ? and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -329,8 +539,8 @@ public class DAO {
         }
         return null;
     }
-    
-    public void updateRating(int star, String comment, int menteeID, int mentorID){
+
+    public void updateRating(int star, String comment, int menteeID, int mentorID) {
         String sql = "update Rating set comment = ?, star = ? where menteeID = ? and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -343,7 +553,7 @@ public class DAO {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public MentorProfile getMentorByUID(int uid) {
         String query = "select * from MentorProfile\n" + " where userID = ?";
         try {
@@ -358,9 +568,174 @@ public class DAO {
         }
         return null;
     }
-    
+
+    public User getUserByMentorID(int mentorID) {
+        String sql1 = "select * from MentorProfile where mentorID = ?";
+        String sql2 = "select * from from [User] where ID = ?";
+        MentorProfile mp = new MentorProfile();
+        try {
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, mentorID);
+            ResultSet rs1 = ps1.executeQuery();
+            while (rs1.next()) {
+                mp = new MentorProfile(rs1.getInt(1), rs1.getInt(2),
+                        rs1.getString(3), rs1.getString(4), rs1.getString(5), rs1.getString(6));
+            }
+
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(2, mp.getUserID());
+            ResultSet rs2 = ps2.executeQuery();
+            while (rs2.next()) {
+                return new User(rs2.getInt(1), rs2.getString(2), rs2.getString(3),
+                        rs2.getString(4), rs2.getBoolean(5), rs2.getString(6), rs2.getString(7),
+                        rs2.getDate(8), rs2.getString(9), rs2.getBoolean(10), rs2.getInt(11));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public int mentorAcceptedReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 1 and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int mentorCanceledReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 2 and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int mentorTotalReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where [status] = 1 and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int mentorCompletedReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3 and mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public User checkOldPassword(int uID, String pass) {
+        String sql = "select * from [User] where ID = ? and password = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, uID);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getBoolean(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getString(9),
+                        rs.getBoolean(10),
+                        rs.getInt(11));
+            }
+        } catch (Exception e) {
+            status = "Error at getting User" + e.getMessage();
+        }
+        return null;
+    }
+
+    public boolean updateNewPassword(String newpass, int uid) {
+        String sql = "update [User] set password = ? where ID = ? ";
+        boolean updated = false;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, newpass.trim());
+            ps.setInt(2, uid);
+            updated = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return updated;
+    }
+
+    public void addCV(int mentorID, int uid, String avatar, String prof, String intro, String lnkedin, String github) {
+        String sql = "insert into MentorProfile values (?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ps.setInt(2, uid);
+            ps.setString(3, avatar);
+            ps.setString(4, prof);
+            ps.setString(5, intro);
+            ps.setString(6, lnkedin);
+            ps.setString(7, github);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void addMentorSkills(int id, int mentorID, String[] skill, int yoe, String desc) {
+        for (String s : skill) {
+            String sql = "insert into MentorSkill values (?,?,?,?,?)";
+            try {
+                PreparedStatement ps = con.prepareStatement(sql);
+                DAO dao = new DAO();
+                ArrayList<MentorSkill> ml = dao.getMentorSkill();
+                id = ml.size() + 1;
+                ps.setInt(1, id);
+                ps.setInt(2, mentorID);
+                ps.setString(3, s);
+                ps.setInt(4, yoe);
+                ps.setString(5, desc);
+                ps.execute();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        dao.updatePassword("123", "khanghg@gamil.com");
+        String[] skills = {"1", "2", "3"};
+        dao.addMentorSkills(0, 1, skills, 1, "test");
     }
 }

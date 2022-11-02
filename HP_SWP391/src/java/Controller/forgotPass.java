@@ -80,15 +80,14 @@ public class forgotPass extends HttpServlet {
         String otp;
         HttpSession ses = request.getSession();
         User u = dao.checkEmailExist(email);
-        if (u==null) {
+        if (u == null) {
             request.setAttribute("message", "Email has not been registered!");
-        }
-        else if (email != null || !email.equals("") || u!=null) {
+        } else if (email != null || !email.equals("") || u != null) {
             Random ran = new Random();
             //otpval = ran.nextInt(1255650);
             int num = ran.nextInt(999999);
             otp = String.format("%06d", num);
-            
+
             String to = email;
             Properties pp = new Properties();
             pp.put("mail.smtp.host", "smtp.gmail.com");
@@ -107,7 +106,7 @@ public class forgotPass extends HttpServlet {
                 msg.setFrom(new InternetAddress(email));
                 msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 msg.setSubject("Recover Password");
-                msg.setText("Here is your recovery code: "+otp);
+                msg.setText("Here is your recovery code: " + otp);
                 Transport.send(msg);
                 System.out.println("Message sent successfully");
             } catch (MessagingException e) {

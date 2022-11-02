@@ -27,8 +27,7 @@
             }
         </style>
     </head>
-    <body class="img js-fullheight" style="background-image: url('https://r4.wallpaperflare.com/wallpaper/190/643/730/space-pixel-art-horizon-stars-wallpaper-f9b0d83d116a3d0b66d768bf50c1063d.jpg');">
-<!--        <a href="HomePage.jsp" >Home</a><br>-->
+    <body class="img js-fullheight" style="background-image: url(images/ratingbg.jpeg);">
         <section>
             <div class="container my-5 py-5 text-dark">
                 <div class="row d-flex justify-content-center">
@@ -38,8 +37,7 @@
                                 <div class="d-flex flex-start w-100">
                                     <div class="w-100">
                                         <form action="rating" method="post">
-                                            <h5>Give mentor your feedback</h5>
-                                            <h6 class="mb-4 text-center" style="color: red">${message}</h6>
+                                            <h5 style="color: #5fcf80">Give mentor your feedback</h5>
                                             <div class="rating mb-3" id="rating">
                                                 <input type="radio" id="star5" name="rating" value="5" />
                                                 <label class = "full" for="star5" title="Awesome"></label>
@@ -60,12 +58,16 @@
                                                 <textarea class="form-control" name="feedback" id="feedback" placeholder="Give your feedback..." rows="4"></textarea>
                                             </div>
                                             <br>
+                                            <input type="hidden" value="${mentorID}" name="mentorID">
                                             <div class="float-end mt-2 pt-1">
-                                                <input type="submit" value="Send Feedback" class="btn btn-primary btn-block"/>
+                                                <input style="color: white; background-color: #5fcf80" type="submit" value="Send Feedback" class="btn btn-primary btn-block"/>
                                             </div>
-                                            <div class="form-input" style="text-align: center;margin-top: 50px;font-size: 15px">
-                                                Return to <a href="HomePage.jsp" style="text-decoration: none"><strong>Home Page</strong></a>
+                                            <div style="color: #5fcf80" class="form-input" style="text-align: center;margin-top: 50px;font-size: 15px">
+                                                Return to <a href="mentee" style="text-decoration: none;color: #5fcf80;"><strong>Mentee Page</strong></a>
                                             </div>
+                                            <br>
+                                            <h6 class="mb-4" style="color: red">${message}</h6>
+
                                         </form>
                                     </div>
                                 </div>

@@ -24,8 +24,12 @@
             }
 
             .custom-control-label::before {
-                background-color: #dee2e6;
-                border: #dee2e6
+                background-color: #5fcf80;
+                border: #5fcf80;
+            }
+            .bg-info{
+                background-color: #5fcf80!important;
+                background-image: url(images/newpassbg.jpg);
             }
         </style>
     </head>
