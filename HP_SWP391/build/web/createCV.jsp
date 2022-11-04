@@ -65,7 +65,7 @@
                                                     <div class="row">
                                                         <input type="hidden" name="kid" value="${user.userID}">
                                                     <input type="hidden" name="role" value="${user.role}">
-                                                    
+
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -174,9 +174,12 @@
                                                                 <label class="col-form-label">Expertise</label>
                                                             </div>
                                                             <div class="col-lg-10 col-9">
-                                                                <c:forEach items="${listS}" var="s">
-                                                                    <input type="checkbox" name="skills" value="${s.skillID}">${s.skillName}<br>
-                                                                </c:forEach>
+                                                                <c:forEach begin="0" end="${listS.size()-1}" step="1" var="i">
+                                                                    <div><input type="checkbox" class="check skill" name="skills" value="${i} ${listS.get(i).getSkillID()}">${listS.get(i).getSkillName()} with 
+                                                                        <input type="number" min="1" class="form-control" name="yoe"
+                                                                               placeholder="Years of experience"></div><br>
+                                                                    </c:forEach>
+
                                                             </div>
                                                         </div> 
                                                     </div>                                           
@@ -185,11 +188,11 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group row align-items-center">
                                                             <div class="col-lg-2 col-3">
-                                                                <label class="col-form-label">Years Of Experience</label>
+                                                                <label class="col-form-label">Description</label>
                                                             </div>
                                                             <div class="col-lg-10 col-9">
-                                                                <input type="number" id="helperText" class="form-control" name="yoe"
-                                                                       required="">
+                                                                <input type="text" min="1" id="helperText" class="form-control" name="desc"
+                                                                       required="" placeholder="Description of your skills">
                                                             </div>
                                                         </div> 
                                                     </div>                                           
@@ -273,7 +276,16 @@
 
         <!-- Page level custom scripts -->
         <script src="Hieu/js/demo/datatables-demo.js"></script>
-       
+        <script>
+            $("input:checkbox").click(function () {
+                var bol = $("input:checkbox:checked").length >= 3;
+                $("input:checkbox").not(":checked").attr("disabled", bol);
+            });
+        </script>
+        <script>
+
+        </script>
+
     </body>
 
 </html>

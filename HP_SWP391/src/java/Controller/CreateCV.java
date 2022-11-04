@@ -53,7 +53,6 @@ public class CreateCV extends HttpServlet {
             out.println("<h1>Servlet CreateCV at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
 
         }
     }
@@ -95,15 +94,16 @@ public class CreateCV extends HttpServlet {
         int uid = u.getUserID();
         int mentorID;
         ArrayList<MentorProfile> mp = dao.getMentorProfile();
-        mentorID = mp.size()+1;
+        mentorID = mp.size() + 1;
         String prof = request.getParameter("prof");
         String intro = request.getParameter("intro");
         String lnkdin = request.getParameter("lnkdin");
         String github = request.getParameter("github");
-        int yoe = Integer.parseInt(request.getParameter("yoe"));
         dao.addCV(mentorID, uid, intro, prof, intro, lnkdin, github);
         String[] skillID = request.getParameterValues("skills");
-        dao.addMentorSkills(0, mentorID, skillID, yoe, "test");
+        String[] yoe = request.getParameterValues("yoe");
+        String desc = request.getParameter("desc");
+        dao.addMentorSkills(0, mentorID, skillID, yoe, desc);
         response.sendRedirect("mentee");
         processRequest(request, response);
     }

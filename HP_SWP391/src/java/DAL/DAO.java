@@ -713,7 +713,7 @@ public class DAO {
         }
     }
 
-    public void addMentorSkills(int id, int mentorID, String[] skill, int yoe, String desc) {
+    public void addMentorSkills(int id, int mentorID, String[] skill, String[] yoe, String desc) {
         for (String s : skill) {
             String sql = "insert into MentorSkill values (?,?,?,?,?)";
             try {
@@ -721,12 +721,16 @@ public class DAO {
                 DAO dao = new DAO();
                 ArrayList<MentorSkill> ml = dao.getMentorSkill();
                 id = ml.size() + 1;
+                int index = Integer.parseInt(s.split("\\s+")[0]);
+                int sid = Integer.parseInt(s.split("\\s+")[1]);
+                String yoeOfSid = yoe[index];
                 ps.setInt(1, id);
                 ps.setInt(2, mentorID);
-                ps.setString(3, s);
-                ps.setInt(4, yoe);
+                ps.setInt(3, sid);
+                ps.setString(4, yoeOfSid);
                 ps.setString(5, desc);
-                ps.execute();
+                ps.executeUpdate();
+
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -736,6 +740,7 @@ public class DAO {
     public static void main(String[] args) {
         DAO dao = new DAO();
         String[] skills = {"1", "2", "3"};
-        dao.addMentorSkills(0, 1, skills, 1, "test");
+        String[] yoe = {"10", "5", "7"};
+        dao.addMentorSkills(0, 1, skills, yoe, "test");
     }
 }
