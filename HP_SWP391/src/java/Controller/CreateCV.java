@@ -102,7 +102,7 @@ public class CreateCV extends HttpServlet {
         dao.addCV(mentorID, uid, intro, prof, intro, lnkdin, github);
         String[] skillID = request.getParameterValues("skills");
         String[] yoe = request.getParameterValues("yoe");
-        String desc = request.getParameter("desc");
+        String[] desc = request.getParameterValues("desc");
         dao.addMentorSkills(0, mentorID, skillID, yoe, desc);
         response.sendRedirect("mentee");
         processRequest(request, response);

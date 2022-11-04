@@ -177,14 +177,17 @@
                                                                 <c:forEach begin="0" end="${listS.size()-1}" step="1" var="i">
                                                                     <div><input type="checkbox" class="check skill" name="skills" value="${i} ${listS.get(i).getSkillID()}">${listS.get(i).getSkillName()} with 
                                                                         <input type="number" min="1" class="form-control" name="yoe"
-                                                                               placeholder="Years of experience"></div><br>
+                                                                               placeholder="Years of experience">
+                                                                        <input type="text" id="helperText" class="form-control" name="desc"
+                                                                        placeholder="Description of your skills">
+                                                                    </div><br>
                                                                     </c:forEach>
 
                                                             </div>
                                                         </div> 
                                                     </div>                                           
                                                 </div>
-                                                <div class="row">
+<!--                                                <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row align-items-center">
                                                             <div class="col-lg-2 col-3">
@@ -196,7 +199,7 @@
                                                             </div>
                                                         </div> 
                                                     </div>                                           
-                                                </div>
+                                                </div>-->
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row align-items-center">
