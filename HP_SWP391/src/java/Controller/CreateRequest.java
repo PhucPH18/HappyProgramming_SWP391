@@ -5,6 +5,7 @@
 package Controller;
 
 import DAL.DAO;
+import Model.MentorProfile;
 import Model.RequestSkill;
 import Model.SkillCategory;
 import Model.User;
@@ -16,7 +17,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -91,12 +91,14 @@ public class CreateRequest extends HttpServlet {
         Date date = Date.valueOf(java.time.LocalDate.now());
         User u = (User) session.getAttribute("active");
         int menteeID = u.getUserID();
+        MentorProfile mp = (MentorProfile) session.getAttribute("mp");
+        int mentorID = mp.getMentorID();
         String title = request.getParameter("title");
         String content = request.getParameter("content");
 
         int requestSkillID = dao.getRequestSkill().size() + 1;
         int skillID = Integer.parseInt(request.getParameter("skill"));
-        dao.CreateRequest(requestID, 0, menteeID, date, 0, "", title, content, requestSkillID,skillID);
+        dao.CreateRequest(requestID, mentorID, menteeID, date, 0, null, title, content, 0, requestSkillID,skillID);
         response.sendRedirect("mentee");
     }
 

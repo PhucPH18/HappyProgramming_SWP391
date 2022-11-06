@@ -95,11 +95,20 @@
                                                 <label class="col-form-label">Request Skill</label>
                                             </div>
                                             <div class="col-lg-8 col-8">
-                                                <select class="form-control" name="skill">
+                                                <select class="form-control" name="skillID">
                                                     <option disabled="disabled" selected="selected">Choose skill</option>
-                                                    <c:forEach items="${scList}" var="l">
-                                                        <c:if test="${l.status}">
-                                                            <option value="${l.skillID}">${l.skillName}</option>
+                                                    <c:forEach items="${listRS}" var="rs">
+                                                        <c:if test="${req.requestID==rs.requestID}">
+                                                            <c:forEach items="${scList}" var="l">
+                                                                <c:if test="${l.status}">
+                                                                    <c:if test="${rs.skillID==l.skillID}">
+                                                                        <option selected="selected" value="${l.skillID}">${l.skillName}</option>
+                                                                    </c:if>
+                                                                    <c:if test="${rs.skillID!=l.skillID}">
+                                                                        <option value="${l.skillID}">${l.skillName}</option>
+                                                                    </c:if>
+                                                                </c:if>
+                                                            </c:forEach>
                                                         </c:if>
                                                     </c:forEach>
                                                 </select>

@@ -79,6 +79,7 @@
                                                             <div class="col-lg-10 col-9">
                                                                 <input disabled type="text" id="helperText" class="form-control" name="UserName"
                                                                        placeholder="User Name"value="${user.username}">
+                                                                <input type="hidden" name="UserName" value="${user.username}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -94,7 +95,7 @@
                                                             </div>
                                                             <div class="col-lg-10 col-9">
                                                                 <input type="text" id="helperText" class="form-control" name="Fullname"
-                                                                       placeholder="Fullname"value="${user.fullname}">
+                                                                       placeholder="Fullname" value="${user.fullname}">
                                                             </div>
                                                         </div> 
                                                     </div>                                           
@@ -150,7 +151,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group row align-items-center">
                                                             <div class="col-lg-2 col-3">
-                                                                <label class="col-form-label">Dob</label>
+                                                                <label class="col-form-label">DOB</label>
                                                             </div>
                                                             <div class="col-lg-10 col-9">
                                                                 <input type="date" id="helperText" class="form-control" name="Dob"
@@ -177,9 +178,9 @@
                                         </div>
                                     </div>
                             </section>
-                            <button onclick="myFunc()" type="submit" id="sweet" class="btn btn-primary" id="sweet" style="padding-left:25px;padding-right: 25px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
-                                    style="margin-right: 5px;">
-                                </i>Save</button>
+                            <button onclick="myFunc()" type="submit" id="sweet" class="btn btn-primary" id="sweet" style="padding-left:25px;padding-right: 25px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;">
+                                <i style="margin-right: 5px;"></i>
+                                Save</button>
                         </form>
                     </div>
                     <!-- /.container-fluid -->

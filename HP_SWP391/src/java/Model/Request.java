@@ -19,6 +19,7 @@ public class Request {
     private String link;
     private String title;
     private String content;
+    private int mentorStatus;
     private String username;
 
     public Request() {
@@ -31,7 +32,7 @@ public class Request {
         this.username = username;
     }
 
-    public Request(int requestID, int mentorID, int menteeID, Date date, int status, String link, String title, String content) {
+    public Request(int requestID, int mentorID, int menteeID, Date date, int status, String link, String title, String content, int mentorStatus) {
         this.requestID = requestID;
         this.mentorID = mentorID;
         this.menteeID = menteeID;
@@ -40,7 +41,10 @@ public class Request {
         this.link = link;
         this.title = title;
         this.content = content;
+        this.mentorStatus = mentorStatus;
     }
+
+    
     
     public String getUsername() {
         return username;
@@ -114,10 +118,22 @@ public class Request {
         this.content = content;
     }
 
+    public int getMentorStatus() {
+        return mentorStatus;
+    }
+
+    public void setMentorStatus(int mentorStatus) {
+        this.mentorStatus = mentorStatus;
+    }
+
     @Override
     public String toString() {
-        return "Request{" + "requestID=" + requestID + ", mentorID=" + mentorID + ", menteeID=" + menteeID + ", date=" + date + ", status=" + status + ", link=" + link + ", title=" + title + ", content=" + content + '}';
+        return "Request{" + "requestID=" + requestID + ", mentorID=" + mentorID + ", menteeID=" + menteeID + ", date=" + date + ", status=" + status + ", link=" + link + ", title=" + title + ", content=" + content + ", mentorStatus=" + mentorStatus + '}';
     }
+    
+    
+
+    
     
     
 }

@@ -84,18 +84,18 @@ public class Mentee_update extends HttpServlet {
             throws ServletException, IOException {
         DAO dao = new DAO();
         int id = Integer.parseInt(request.getParameter("kid"));
-        int role = Integer.parseInt(request.getParameter("role"));
         String UserName = request.getParameter("UserName");
         String Password = request.getParameter("Password");
         String Fullname = request.getParameter("Fullname");
         boolean Gender = request.getParameter("Gender").equals("1");
         String Phone = request.getParameter("Phone");
         String Email = request.getParameter("Email");
-        String date_raw = request.getParameter("Dob");
-        Date date = Date.valueOf(date_raw);
+        Date dob = Date.valueOf(request.getParameter("Dob"));
         String Address = request.getParameter("Address");
         boolean Status = request.getParameter("Status").equals("1");
-        dao.updateUser(id, UserName, Password, Fullname, Gender, Phone, Email, date, Address, Status, role);
+        int role = Integer.parseInt(request.getParameter("role"));
+
+        dao.updateUser(id, UserName, Password, Fullname, Gender, Phone, Email, dob, Address, Status, role);
 
         HttpSession ses = request.getSession();
         ses.removeAttribute("active");

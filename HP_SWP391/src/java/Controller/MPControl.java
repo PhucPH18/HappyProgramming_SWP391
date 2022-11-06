@@ -5,22 +5,25 @@
 package Controller;
 
 import DAL.DAO;
+import Model.MentorProfile;
+import Model.MentorSkill;
+import Model.SkillCategory;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author admin
+ * @author DELL
  */
-@WebServlet(name = "Rating", urlPatterns = {"/rating"})
-public class Rating extends HttpServlet {
+public class MPControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +42,10 @@ public class Rating extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Rating</title>");            
+            out.println("<title>Servlet MPControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Rating at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MPControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,9 +63,7 @@ public class Rating extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int mentorID = Integer.parseInt(request.getParameter("mentorID"));
-        request.setAttribute("mentorID", mentorID);
-        request.getRequestDispatcher("rating.jsp").forward(request, response);
+        doPost(request, response);
     }
 
     /**
@@ -76,24 +77,37 @@ public class Rating extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        HttpSession ses = request.getSession();
+//        processRequest(request, response);
+        HttpSession session = request.getSession();
         DAO dao = new DAO();
-        User u = (User) ses.getAttribute("active");
-        int menteeID = u.getUserID();
-        int star = Integer.parseInt(request.getParameter("rating"));
-        String feedback = request.getParameter("feedback");
+        List<SkillCategory> listS = dao.getSkillCategory();
+        request.setAttribute("listS", listS);
         int mentorID = Integer.parseInt(request.getParameter("mentorID"));
-        if (dao.checkRatingExist(menteeID, mentorID)!=null) {
-            dao.updateRating(star, feedback, menteeID, mentorID);
-            request.setAttribute("message", "Your rating has been updated!");
-        } else if (dao.getMentorByUID(menteeID)!=null) {
-            request.setAttribute("message", "You can not rate yourself!");
-        } else {
-            dao.addRating(0, feedback, star, menteeID, mentorID);
-            request.setAttribute("message", "Rated successfully!");
+        int userID = 0;
+        MentorProfile mp = new MentorProfile();
+        for (MentorProfile m : dao.getMentorProfile()) {
+            if (m.getMentorID() == mentorID) {
+                userID = m.getUserID();
+                mp = m;
+            }
         }
-        request.getRequestDispatcher("rating.jsp").forward(request, response);
+        User user = dao.getUserByID(userID);
+        
+        session.removeAttribute("user");
+        session.removeAttribute("mp");
+        session.setAttribute("user", user);
+        session.setAttribute("mp", mp);
+        
+        ArrayList<MentorSkill> msList = new ArrayList<>();
+        for(MentorSkill ms : dao.getMentorSkill()){
+            if(ms.getMentorID()==mentorID){
+                msList.add(ms);
+            }
+        }
+        
+        session.setAttribute("msList", msList);
+        request.setAttribute("scList", dao.getSkillCategory());
+        request.getRequestDispatcher("MentorProfile.jsp").forward(request, response);
     }
 
     /**

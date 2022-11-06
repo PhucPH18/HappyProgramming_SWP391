@@ -13,19 +13,21 @@ public class MentorProfile {
     private int userID;
     private String avatar;
     private String introduction;
-    private String LinkedIn;
-    private String GitHub;
+    private String linkedIn;
+    private String gitHub;
+    private String profession;
 
     public MentorProfile() {
     }
 
-    public MentorProfile(int mentorID, int userID, String avatar, String introduction, String LinkedIn, String GitHub) {
+    public MentorProfile(int mentorID, int userID, String avatar, String introduction, String linkedIn, String gitHub, String profession) {
         this.mentorID = mentorID;
         this.userID = userID;
         this.avatar = avatar;
         this.introduction = introduction;
-        this.LinkedIn = LinkedIn;
-        this.GitHub = GitHub;
+        this.linkedIn = linkedIn;
+        this.gitHub = gitHub;
+        this.profession = profession;
     }
 
     public int getMentorID() {
@@ -61,25 +63,32 @@ public class MentorProfile {
     }
 
     public String getLinkedIn() {
-        return LinkedIn;
+        return linkedIn;
     }
 
-    public void setLinkedIn(String LinkedIn) {
-        this.LinkedIn = LinkedIn;
+    public void setLinkedIn(String linkedIn) {
+        this.linkedIn = linkedIn;
     }
 
     public String getGitHub() {
-        return GitHub;
+        return gitHub;
     }
 
-    public void setGitHub(String GitHub) {
-        this.GitHub = GitHub;
+    public void setGitHub(String gitHub) {
+        this.gitHub = gitHub;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     @Override
     public String toString() {
-        return "MentorProfile{" + "mentorID=" + mentorID + ", userID=" + userID + ", avatar=" + avatar + ", introduction=" + introduction + ", LinkedIn=" + LinkedIn + ", GitHub=" + GitHub + '}';
+        return "MentorProfile{" + "mentorID=" + mentorID + ", userID=" + userID + ", avatar=" + avatar + ", introduction=" + introduction + ", linkedIn=" + linkedIn + ", gitHub=" + gitHub + ", profession=" + profession + '}';
     }
-    
     
 }

@@ -74,7 +74,15 @@
                                         <tbody>
                                             <c:forEach items="${listM}" var="o">
                                                 <tr>
-                                                    <td><a href="#">${o.fullName}</a></td>
+                                                    <c:forEach items="${listU}" var="u">
+                                                        <c:if test="${o.fullName.equals(u.fullname)}">
+                                                            <c:forEach items="${listMP}" var="mp">
+                                                                <c:if test="${mp.userID==u.userID}">
+                                                                    <td><a href="MPControl?mentorID=${mp.mentorID}">${o.fullName}</a></td>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </c:if> 
+                                                    </c:forEach>
                                                     <td>${o.intro}</td>
                                                     <c:if test="${o.gender == true}">
                                                         <td>Male</td>
@@ -95,7 +103,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div>  
 
                     </div>
                     <!-- /.container-fluid -->

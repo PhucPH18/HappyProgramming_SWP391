@@ -6,6 +6,7 @@ package Controller;
 
 import DAL.DAO;
 import Model.Request;
+import Model.RequestSkill;
 import Model.SkillCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -61,6 +62,7 @@ public class UpdateRequest extends HttpServlet {
             throws ServletException, IOException {
         DAO dao = new DAO();
         List<SkillCategory> listS = dao.getSkillCategory();
+        List<RequestSkill> listRS = dao.getRequestSkill();
         request.setAttribute("listS", listS);
         Request req = new Request();
         int rID = Integer.parseInt(request.getParameter("rid"));
@@ -71,6 +73,7 @@ public class UpdateRequest extends HttpServlet {
         }
         request.setAttribute("req", req);
         request.setAttribute("scList", dao.getSkillCategory());
+        request.setAttribute("listRS", listRS);
         request.getRequestDispatcher("UpdateRequest.jsp").forward(request, response);
     }
 
@@ -90,8 +93,8 @@ public class UpdateRequest extends HttpServlet {
         String link = request.getParameter("link");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
-        dao.updateRequestFromMentee(requestID, link, title, content);
-        //        request.getRequestDispatcher("mentee").forward(request, response);
+        int skillID = Integer.parseInt(request.getParameter("skillID"));
+        dao.updateRequestFromMentee(requestID, link, title, content, skillID);
         response.sendRedirect("mentee");
     }
 
