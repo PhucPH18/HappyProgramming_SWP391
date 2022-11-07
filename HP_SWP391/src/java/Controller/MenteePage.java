@@ -36,21 +36,35 @@ public class MenteePage extends HttpServlet {
         List<SkillCategory> listS = dao.getSkillCategory();
         List<User> listU = dao.getUser();
         List<MentorProfile> listMP = dao.getMentorProfile();
-        
+        List<RequestSkill> listRS = dao.getRequestSkill();
+
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("active");
         int menteeID = u.getUserID();
+        int menteeCompleteReq = dao.menteeCompletedReq(menteeID);
+
         ArrayList<Request> reqList = new ArrayList<>();
         for (Request r : dao.getRequest()) {
             if (r.getMenteeID() == menteeID) {
                 reqList.add(r);
             }
         }
+        
+        ArrayList<MentorRegist> mrList = new ArrayList<>();
+        for (MentorRegist mr : dao.getMentorRegist()) {
+            if (mr.getMenteeID() == menteeID) {
+                mrList.add(mr);
+            }
+        }
+        
+        request.setAttribute("menteeCompleteReq", menteeCompleteReq);
         request.setAttribute("reqList", reqList);
+        request.setAttribute("mrList", mrList);
         request.setAttribute("size", reqList.size());
         request.setAttribute("listS", listS);
         request.setAttribute("listU", listU);
         request.setAttribute("listMP", listMP);
+        request.setAttribute("listRS", listRS);
         request.getRequestDispatcher("Mentee.jsp").forward(request, response);
     }
 

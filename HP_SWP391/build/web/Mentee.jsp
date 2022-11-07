@@ -45,62 +45,164 @@
                             <div style="display: flex; justify-content: space-between">
                                 <!-- Page Heading -->
                                 <h1 class="h3 mb-2 text-gray-800">Manage Request</h1>
-                                <a href="CreateRequest">
-                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                        </i>Create  Request</button>
+                            <c:if test="${reqList.size()== menteeCompleteReq}">
+                                <c:if test="${mrList.size()==0}">
+                                    <a href="createCV">
+                                        <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;
+                                                background-color: #5fcf80;border-color: #5fcf80;">
+                                            <i class="bi-plus-circle" style="margin-right: 5px;">
+                                            </i>Register as mentor</button>
+                                    </a>
+                                </c:if>
+                                
+                                <c:if test="${mrList.size()!=0}">
+                                    <a href="updateCV">
+                                        <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;
+                                                background-color: #5fcf80;border-color: #5fcf80;">
+                                            <i class="bi-plus-circle" style="margin-right: 5px;">
+                                            </i>Update your CV</button>
+                                    </a>
+                                </c:if>
+
+                            </c:if>
+
+                            <c:if test="${reqList.size()!= menteeCompleteReq}">
+                                <a onclick="myFunc()">
+                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;
+                                            background-color: #5fcf80;border-color: #5fcf80;">
+                                        <i class="bi-plus-circle" style="margin-right: 5px;">
+                                        </i>Register as mentor</button>
                                 </a>
+                            </c:if>
+
+                        </div>
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">List of requests</h6>
                             </div>
-                            <!-- DataTales Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">List of requests</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Title</th>
-                                                    <th>Content</th>
-                                                    <th>Request created date</th>
-                                                    <th>Status</th>
-                                                    <th>Link</th>
-                                                    <th>Mentor</th>
-                                                    <th>Rating</th>
-                                                    <th>Edit</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Content</th>
+                                                <th>Request Skill</th>
+                                                <th>Meet</th>
+                                                <th>Status</th>
+                                                <th>Mentor</th>
+                                                <th>Action</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                             <c:forEach items="${reqList}" var="o" >
                                                 <tr>
                                                     <td>${o.title}</a></td>
                                                     <td>${o.content}</td>
-                                                    <td>${o.date}</td>
-                                                    <c:if test="${o.status==0}">
-                                                        <td style="color: red">Waiting</td>
-                                                    </c:if>
-                                                    <c:if test="${o.status==1}">
-                                                        <td style="color: yellow">Ongoing</td>
-                                                    </c:if>
-                                                    <c:if test="${o.status==2}">
-                                                        <td style="color: green">Finished</td>
-                                                    </c:if>
-                                                    <td>${o.link}</td>
-                                                    <c:forEach items="${listMP}" var="mp" >
-                                                        <c:if test="${o.mentorID == mp.mentorID}">
-                                                            <c:forEach items="${listU}" var="u" >
-                                                                <c:if test="${mp.userID == u.userID}">
-                                                                    <td><a href="#">${u.fullname}</a></td>
+                                                    <c:forEach items="${listRS}" var="rs">
+                                                        <c:if test="${o.requestID==rs.requestID}">
+                                                            <c:forEach items="${listS}" var="s">
+                                                                <c:if test="${rs.skillID==s.skillID}">
+                                                                    <td>${s.skillName}</td>
                                                                 </c:if>
                                                             </c:forEach>
                                                         </c:if>
                                                     </c:forEach>
-                                                                    <td><a href="rating?mentorID=${o.mentorID}">Rate</a></td>
+
+                                                    <c:if test="${o.link.length() != 0}">
+                                                        <td><a style="color: #009c68;font-weight: bold" href="${o.link}">Join</a></td>
+                                                    </c:if>
+                                                    <c:if test="${o.link.length() == 0}">
+                                                        <td><a style="color: #009c68;font-weight: bold" href="UpdateRequest?rid=${o.requestID}">Add</a></td>
+                                                    </c:if>
+
+
+                                                    <c:if test="${o.mentorStatus==0}">
+                                                        <td style="color: blue">Waiting</td>
+                                                    </c:if>
+                                                    <c:if test="${o.mentorStatus==1}">
+                                                        <td style="color: orange">In progress</td>
+                                                    </c:if>
+                                                    <c:if test="${o.mentorStatus==2}">
+                                                        <td style="color: red">Rejected</td>
+                                                    </c:if>
+                                                    <c:if test="${o.mentorStatus==3}">
+                                                        <td style="color: green">Finished</td>
+                                                    </c:if>
+
+                                                    <c:forEach items="${listMP}" var="mp" >
+                                                        <c:if test="${o.mentorID == mp.mentorID}">
+                                                            <c:forEach items="${listU}" var="u" >
+                                                                <c:if test="${mp.userID == u.userID}">
+                                                                    <td><a style="color: #009c68;font-weight: bold" href="MPControl?mentorID=${o.mentorID}">${u.fullname}</a></td>
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </c:if>
+                                                        </c:forEach>
+
+                                                    <c:if test="${o.mentorStatus==0}">
+                                                        <td></td>
+                                                    </c:if>                
+                                                    <c:if test="${o.mentorStatus==1}">
+                                                        <td><a  style="color: #009c68;font-weight: bold" href="FinishRequest?requestID=${o.requestID}"
+                                                                data-toggle="modal" data-target="#finishModal">Finish</a></td>
+                                                        </c:if>
+                                                        <c:if test="${o.mentorStatus==2}">
+                                                        <td></td>
+                                                    </c:if>
+                                                    <c:if test="${o.mentorStatus==3}">
+                                                        <td><a  style="color: #009c68;font-weight: bold" href="rating?mentorID=${o.mentorID}">Rate</a></td>
+                                                    </c:if>
+
                                                     <td> <a href="UpdateRequest?rid=${o.requestID}"><i
                                                                 class="fas fa-address-book"></i>
                                                         </a>
-                                                        <a href="DeleteRequest?rid=${o.requestID}" 
-                                                           <i class="fas fa-trash" style="color: #ff3333"></i></a>
+                                                        <a href="DeleteRequest?rid=${o.requestID}" data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="fas fa-trash" style="color: #ff3333"></i>
+                                                        </a>
+
+                                                        <!-- Delete Modal-->
+                                                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Confirm massage</h5>
+                                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">Are you sure you want to delete this request?</div>
+                                                                    <div class="modal-footer">
+                                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                        <a class="btn btn-primary" href="DeleteRequest?rid=${o.requestID}">Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Finish Modal-->
+                                                        <div class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Confirm massage</h5>
+                                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">Are you sure you want to finish this request?</div>
+                                                                    <div class="modal-footer">
+                                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                        <a class="btn btn-primary" href="FinishRequest?requestID=${o.requestID}">Finish</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -155,6 +257,12 @@
 
         <!-- Page level custom scripts -->
         <script src="Hieu/js/demo/datatables-demo.js"></script>
+
+        <script>
+                                    function myFunc() {
+                                        alert("You need to finish all your request to become a mentor");
+                                    }
+        </script>
 
     </body>
 

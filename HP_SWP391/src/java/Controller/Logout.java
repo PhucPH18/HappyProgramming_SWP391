@@ -44,7 +44,7 @@ public class Logout extends HttpServlet {
             out.println("</html>");
             HttpSession ses = request.getSession();
             ses.removeAttribute("active");
-            response.sendRedirect("HomePage.jsp");
+            response.sendRedirect("HomeControl");
         }
     }
 

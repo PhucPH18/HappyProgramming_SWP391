@@ -76,17 +76,17 @@
                                                     <td><c:choose>
                                                             <c:when test="${o.status==0}">Waiting
                                                             </c:when>
-                                                            <c:when test="${o.status==1}">Approved
+                                                            <c:when test="${o.status==2}">Approved
                                                             </c:when>
                                                             <c:otherwise>Denied
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </td>
                                                     <td>
-                                                        <c:if test="${o.status!=1}">
+                                                        <c:if test="${o.status!=2}">
                                                             <a href="approve?requestID=${o.requestID}"><button type="button" class="btn btn-success btn-rounded btn-sm my-0">Approve</button></a>
                                                         </c:if>
-                                                        <c:if test="${o.status!=2}">
+                                                        <c:if test="${o.status!=1}">
                                                             <a href="deny?requestID=${o.requestID}"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Deny</button></a>
                                                         </c:if>
                                                     </td>

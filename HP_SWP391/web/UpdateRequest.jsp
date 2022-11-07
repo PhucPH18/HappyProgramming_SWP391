@@ -67,10 +67,21 @@
                                             <div class="col-lg-3 col-3">
                                                 <label class="col-form-label">Title</label>
                                             </div>
-                                            <div class="col-lg-8 col-8">
-                                                <input type="text" id="helperText" class="form-control" name="title"
-                                                       placeholder="Title" value="${req.title}">
-                                            </div>
+                                            <c:if test="${role==3}">
+                                                <div class="col-lg-8 col-8">
+                                                    <input type="text" id="helperText" class="form-control" name="title"
+                                                           placeholder="Title" value="${req.title}">
+                                                </div>
+                                            </c:if>
+
+
+                                            <c:if test="${role==2}">
+                                                <div class="col-lg-8 col-8">
+                                                    <input disabled type="text" id="helperText" class="form-control" name="title"
+                                                           placeholder="Title" value="${req.title}">
+                                                    <input type="hidden" name="title" value="${req.title}">
+                                                </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -81,9 +92,18 @@
                                             <div class="col-lg-3 col-3">
                                                 <label class="col-form-label">Content</label>
                                             </div>
-                                            <div class="col-lg-8 col-8">
-                                                <textarea name="content" rows="5" cols="100">${req.content}</textarea>
-                                            </div>
+                                            <c:if test="${role==3}">
+                                                <div class="col-lg-8 col-8">
+                                                    <textarea name="content" rows="5" cols="100">${req.content}</textarea>
+                                                </div>
+                                            </c:if>
+
+                                            <c:if test="${role==2}">
+                                                <div class="col-lg-8 col-8">
+                                                    <textarea disabled name="content" rows="5" cols="100">${req.content}</textarea>
+                                                    <textarea hidden name="content" rows="5" cols="100">${req.content}</textarea>
+                                                </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -94,16 +114,50 @@
                                             <div class="col-lg-3 col-3">
                                                 <label class="col-form-label">Request Skill</label>
                                             </div>
-                                            <div class="col-lg-8 col-8">
-                                                <select class="form-control" name="skill">
-                                                    <option disabled="disabled" selected="selected">Choose skill</option>
-                                                    <c:forEach items="${scList}" var="l">
-                                                        <c:if test="${l.status}">
-                                                            <option value="${l.skillID}">${l.skillName}</option>
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
+                                            <c:if test="${role==3}">
+                                                <div class="col-lg-8 col-8">
+                                                    <select class="form-control" name="skillID">
+                                                        <option disabled="disabled" selected="selected">Choose skill</option>
+                                                        <c:forEach items="${listRS}" var="rs">
+                                                            <c:if test="${req.requestID==rs.requestID}">
+                                                                <c:forEach items="${scList}" var="l">
+                                                                    <c:if test="${l.status}">
+                                                                        <c:if test="${rs.skillID==l.skillID}">
+                                                                            <option selected="selected" value="${l.skillID}">${l.skillName}</option>
+                                                                        </c:if>
+                                                                        <c:if test="${rs.skillID!=l.skillID}">
+                                                                            <option value="${l.skillID}">${l.skillName}</option>
+                                                                        </c:if>
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </c:if>
+
+                                            <c:if test="${role==2}">
+                                                <div class="col-lg-8 col-8">
+                                                    <select class="form-control" name="skillID">
+                                                        <option disabled="disabled" selected="selected">Choose skill</option>
+                                                        <c:forEach items="${listRS}" var="rs">
+                                                            <c:if test="${req.requestID==rs.requestID}">
+                                                                <c:forEach items="${scList}" var="l">
+                                                                    <c:if test="${l.status}">
+                                                                        <c:if test="${rs.skillID==l.skillID}">
+                                                                            <option selected="selected" value="${l.skillID}">${l.skillName}</option>
+                                                                        </c:if>
+                                                                        <c:if test="${rs.skillID!=l.skillID}">
+                                                                            <option value="${l.skillID}">${l.skillName}</option>
+                                                                        </c:if>
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </c:if>
+
                                         </div> 
                                     </div>                                           
                                 </div>

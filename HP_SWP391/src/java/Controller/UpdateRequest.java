@@ -6,13 +6,16 @@ package Controller;
 
 import DAL.DAO;
 import Model.Request;
+import Model.RequestSkill;
 import Model.SkillCategory;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -60,7 +63,12 @@ public class UpdateRequest extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAO dao = new DAO();
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("active");
+        int role = u.getRole();
+        
         List<SkillCategory> listS = dao.getSkillCategory();
+        List<RequestSkill> listRS = dao.getRequestSkill();
         request.setAttribute("listS", listS);
         Request req = new Request();
         int rID = Integer.parseInt(request.getParameter("rid"));
@@ -69,8 +77,10 @@ public class UpdateRequest extends HttpServlet {
                 req = r;
             }
         }
+        request.setAttribute("role", role);
         request.setAttribute("req", req);
         request.setAttribute("scList", dao.getSkillCategory());
+        request.setAttribute("listRS", listRS);
         request.getRequestDispatcher("UpdateRequest.jsp").forward(request, response);
     }
 
@@ -86,13 +96,20 @@ public class UpdateRequest extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAO dao = new DAO();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("active");
         int requestID = Integer.parseInt(request.getParameter("rid"));
         String link = request.getParameter("link");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
-        dao.updateRequestFromMentee(requestID, link, title, content);
-        //        request.getRequestDispatcher("mentee").forward(request, response);
-        response.sendRedirect("mentee");
+        int skillID = Integer.parseInt(request.getParameter("skillID"));
+        dao.updateRequestFromMentee(requestID, link, title, content, skillID);
+        if (user.getRole() == 2) {
+            response.sendRedirect("MentorRequest");
+        }
+        if (user.getRole() == 3) {
+            response.sendRedirect("mentee");
+        }
     }
 
     /**

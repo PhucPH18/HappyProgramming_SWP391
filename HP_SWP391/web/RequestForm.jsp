@@ -94,7 +94,7 @@
                                                     <label class="col-form-label">Request Skill</label>
                                                 </div>
                                                 <div class="col-lg-8 col-8">
-                                                    <select name="skill">
+                                                    <select class="form-control" name="skill">
                                                         <option disabled="disabled" selected="selected">Choose skill</option>
                                                     <c:forEach items="${scList}" var="l">
                                                         <c:if test="${l.status}">

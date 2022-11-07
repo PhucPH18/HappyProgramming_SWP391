@@ -49,7 +49,7 @@
         <header id="header" class="fixed-top">
             <div class="container d-flex align-items-center">
 
-                <h1 class="logo me-auto"><a href="HomePage.jsp">Happy Programming</a></h1>
+                <h1 class="logo me-auto"><a href="HomeControl">Happy Programming</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="HomePage.jsp" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -278,7 +278,7 @@
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
                             </ul>
                         </div>
-                        
+
                         <div class="col-lg-4 col-md-6 footer-newsletter">
                             <h4>Join Our Newsletter</h4>
                             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
