@@ -7,11 +7,11 @@ package Controller;
 import DAL.DAO;
 import Model.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,10 +34,25 @@ public class MentorBySkillControl extends HttpServlet {
         String skillID = request.getParameter("sID");
         DAO dao = new DAO();
         List<SkillCategory> listS = dao.getSkillCategory();
-        List<MentorBySkill> listM = dao.getMentorBySkill(skillID);
+        List<MentorBySkill> listM = new ArrayList<>();
+        List<User> listU = dao.getUser();
+        List<MentorProfile> listMP = dao.getMentorProfile();
+        
+        for(MentorBySkill mbs: dao.getMentorBySkill(skillID)){
+            for(User u : dao.getUser()){
+                for(MentorRegist mr : dao.getMentorRegist()){
+                    if(mbs.getEmail().equals(u.getEmail()) && u.getUserID() == mr.getMenteeID()
+                            && mr.getStatus() == 2){
+                        listM.add(mbs);
+                    }
+                }
+            }
+        }
 
         request.setAttribute("listS", listS);
         request.setAttribute("listM", listM);
+        request.setAttribute("listU", listU);
+        request.setAttribute("listMP", listMP);
         request.getRequestDispatcher("MentorBySkill.jsp").forward(request, response);
 
     }

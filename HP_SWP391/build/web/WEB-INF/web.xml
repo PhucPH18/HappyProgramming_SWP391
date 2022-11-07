@@ -57,12 +57,88 @@
         <servlet-class>Controller.Skill_update</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CreateRequest</servlet-name>
+        <servlet-class>Controller.CreateRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadRequest</servlet-name>
+        <servlet-class>Controller.LoadRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteRequest</servlet-name>
+        <servlet-class>Controller.DeleteRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateRequest</servlet-name>
+        <servlet-class>Controller.UpdateRequest</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>MenteePage</servlet-name>
         <servlet-class>Controller.MenteePage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MentorBySkill</servlet-name>
         <servlet-class>Controller.MentorBySkillControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Mentee_update</servlet-name>
+        <servlet-class>Controller.Mentee_update</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>User_update</servlet-name>
+        <servlet-class>Controller.User_update</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Rating</servlet-name>
+        <servlet-class>Controller.RatingControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FinishRequest</servlet-name>
+        <servlet-class>Controller.FinishRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MentorProfile</servlet-name>
+        <servlet-class>Controller.MentorProfile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MPControl</servlet-name>
+        <servlet-class>Controller.MPControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListRating</servlet-name>
+        <servlet-class>Controller.ListRating</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MentorControl</servlet-name>
+        <servlet-class>Controller.MentorControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeControl</servlet-name>
+        <servlet-class>Controller.HomeControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaticReqController</servlet-name>
+        <servlet-class>Controller.StaticReqController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateCV</servlet-name>
+        <servlet-class>Controller.CreateCV</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>Controller.ChangePassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Update_Mentor_Profile</servlet-name>
+        <servlet-class>Controller.Update_Mentor_Profile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCV</servlet-name>
+        <servlet-class>Controller.UpdateCV</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
@@ -109,12 +185,88 @@
         <url-pattern>/Skill_update</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>CreateRequest</servlet-name>
+        <url-pattern>/CreateRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadRequest</servlet-name>
+        <url-pattern>/LoadRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRequest</servlet-name>
+        <url-pattern>/DeleteRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateRequest</servlet-name>
+        <url-pattern>/UpdateRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MenteePage</servlet-name>
         <url-pattern>/mentee</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MentorBySkill</servlet-name>
         <url-pattern>/mbs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Mentee_update</servlet-name>
+        <url-pattern>/Mentee_update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>User_update</servlet-name>
+        <url-pattern>/User_update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Rating</servlet-name>
+        <url-pattern>/rating</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinishRequest</servlet-name>
+        <url-pattern>/FinishRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MentorProfile</servlet-name>
+        <url-pattern>/MentorProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MPControl</servlet-name>
+        <url-pattern>/MPControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListRating</servlet-name>
+        <url-pattern>/ListRating</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MentorControl</servlet-name>
+        <url-pattern>/MentorControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeControl</servlet-name>
+        <url-pattern>/HomeControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaticReqController</servlet-name>
+        <url-pattern>/staticReq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateCV</servlet-name>
+        <url-pattern>/createCV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Update_Mentor_Profile</servlet-name>
+        <url-pattern>/Update_Mentor_Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCV</servlet-name>
+        <url-pattern>/updateCV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -134,6 +286,6 @@
         <url-pattern>/Skill_delete</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>HomePage.jsp</welcome-file>
+        <welcome-file>HomeControl</welcome-file>
     </welcome-file-list>
 </web-app>

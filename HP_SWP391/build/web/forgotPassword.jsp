@@ -28,8 +28,8 @@
             }
 
             .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-                background-color: #329e5e !important;
-                border: 1px solid #329e5e !important;
+                background-color: #5fcf80 !important;
+                border: 1px solid #5fcf80 !important;
             }
         </style>
 

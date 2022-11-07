@@ -74,7 +74,6 @@ public class Skill_update extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         DAO dao = new DAO();
         int id = Integer.parseInt(request.getParameter("kid"));
         String skillname = request.getParameter("SkillName");

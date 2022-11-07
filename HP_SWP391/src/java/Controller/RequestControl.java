@@ -19,11 +19,17 @@ import java.util.List;
  * @author levuh
  */
 public class RequestControl extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAO dao = new DAO();
-        List<Request> listR = dao.getRequestByID();
-        
+        List<Request> listR = new ArrayList<>();
+        for (Request r : dao.getRequestByID()) {
+            if (r.getRequestID() != 0) {
+                listR.add(r);
+            }
+        }
+
         request.setAttribute("listR", listR);
         request.getRequestDispatcher("ManageRequest.jsp").forward(request, response);
     }

@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,7 +42,7 @@ public class UserControl extends HttpServlet {
             out.println("<title>Servlet UsetControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UsetControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +62,12 @@ public class UserControl extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
         DAO dao = new DAO();
-        List<User> listU = dao.getUser();
+        ArrayList<User> listU = new ArrayList<>();
+        for(User u: dao.getUser()){
+            if(u.getUserID()!=0){
+                listU.add(u);
+            }
+        }
         request.setAttribute("listU", listU);
         request.getRequestDispatcher("ManageUser.jsp").forward(request, response);
     }
