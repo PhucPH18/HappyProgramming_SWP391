@@ -22,8 +22,9 @@ import jakarta.servlet.http.HttpSession;
  */
 @WebServlet(name = "Login", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
-    
+
     DAO dao;
+
     public void init() {
         dao = new DAO();
     }
@@ -45,13 +46,13 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
+            out.println("<title>Servlet Login</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
+
         }
     }
 
@@ -84,7 +85,7 @@ public class Login extends HttpServlet {
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
         User u = dao.login(username, password);
-        if(u==null) {
+        if (u == null) {
             request.setAttribute("error", "Invalid Username or Password. Please try again.");
             RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.include(request, response);
@@ -92,8 +93,15 @@ public class Login extends HttpServlet {
         } else {
             HttpSession ses = request.getSession();
             ses.setAttribute("active", u);
-            if(u.getRole() == 0)    response.sendRedirect("Admin.jsp");
-            else response.sendRedirect("mentee");
+            if (u.getRole() == 0) {
+                response.sendRedirect("Admin.jsp");
+            }
+            if (u.getRole() == 3) {
+                response.sendRedirect("mentee");
+            }
+            if (u.getRole() == 2) {
+                response.sendRedirect("staticReq");
+            }
         }
         processRequest(request, response);
     }

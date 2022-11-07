@@ -89,6 +89,12 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Static request</span></a>
         </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="MentorRequest">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Mentor's request</span></a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

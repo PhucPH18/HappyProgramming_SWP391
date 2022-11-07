@@ -136,13 +136,46 @@ public class DAOTest {
     }
 
     @Test
-    public void testLogin() {
-        System.out.println("login");
+    public void testLogin1() {
+        System.out.println("login1");
         String user = "phucph";
         String pass = "123";
         DAO instance = new DAO();
         String expResult = new User(1, "phucph", "123", "Pham Hong Phuc", true, "0128376291",
                 "phucph@gmail.com", Date.valueOf("2002-12-16"), "Hai Phong", true, 0) + "";
+        String result = instance.login(user, pass) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testLogin2() {
+        System.out.println("login2");
+        String user = "phucph";
+        String pass = "";
+        DAO instance = new DAO();
+        String expResult = "null";
+        String result = instance.login(user, pass) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testLogin3() {
+        System.out.println("login3");
+        String user = "";
+        String pass = "123";
+        DAO instance = new DAO();
+        String expResult = "null";
+        String result = instance.login(user, pass) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testLogin4() {
+        System.out.println("login4");
+        String user = "";
+        String pass = "";
+        DAO instance = new DAO();
+        String expResult = "null";
         String result = instance.login(user, pass) + "";
         assertEquals(expResult, result);
     }
@@ -158,19 +191,50 @@ public class DAOTest {
     }
 
     @Test
-    public void testUpdatePassword() {
-        System.out.println("updatePassword");
-        String newpass = "admin";
+    public void testUpdatePassword1() {
+        System.out.println("updatePassword1");
+        String newpass = "123456";
         String email = "admin@gmail.com";
         DAO instance = new DAO();
         boolean expResult = true;
         boolean result = instance.updatePassword(newpass, email);
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testUpdatePassword2() {
+        System.out.println("updatePassword2");
+        String newpass = "123456";
+        String email = null;
+        DAO instance = new DAO();
+        boolean expResult = false;
+        boolean result = instance.updatePassword(newpass, email);
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testUpdatePassword3() {
+        System.out.println("updatePassword3");
+        String newpass = null;
+        String email = "admin@gmail.com";
+        DAO instance = new DAO();
+        boolean expResult = false;
+        boolean result = instance.updatePassword(newpass, email);
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testUpdatePassword4() {
+        System.out.println("updatePassword4");
+        String newpass = null;
+        String email = null;
+        DAO instance = new DAO();
+        boolean expResult = false;
+        boolean result = instance.updatePassword(newpass, email);
+        assertEquals(expResult, result);
+    }
 
     @Test
-    public void testCheckEmailExist() {
-        System.out.println("checkEmailExist");
+    public void testCheckEmailExist1() {
+        System.out.println("checkEmailExist1");
         String email = "phucph@gmail.com";
         DAO instance = new DAO();
         String expResult = new User(1, "phucph", "123", "Pham Hong Phuc", true, "0128376291",
@@ -178,9 +242,20 @@ public class DAOTest {
         String result = instance.checkEmailExist(email) + "";
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testCheckEmailExist2() {
+        System.out.println("checkEmailExist2");
+        String email = null;
+        DAO instance = new DAO();
+        String expResult = null + "";
+        String result = instance.checkEmailExist(email) + "";
+        assertEquals(expResult, result);
+    }
+    
 
     @Test
-    public void testGetUserByID() {
+    public void testGetUserByID1() {
         System.out.println("getUserByID");
         int id = 1;
         DAO instance = new DAO();
@@ -189,14 +264,57 @@ public class DAOTest {
         String result = instance.getUserByID(id) + "";
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testGetUserByID2() {
+        System.out.println("getUserByID");
+        int id = -1;
+        DAO instance = new DAO();
+        String expResult = null + "";
+        String result = instance.getUserByID(id) + "";
+        assertEquals(expResult, result);
+    }
 
     @Test
-    public void testCheckRatingExist() {
-        System.out.println("checkRatingExist");
+    public void testCheckRatingExist1() {
+        System.out.println("checkRatingExist1");
         int menteeID = 6;
         int mentorID = 1;
         DAO instance = new DAO();
-        String expResult = new Rating(1, "1234", 4, 6, 1) + "";
+        String expResult = new Rating(1, "okay", 4, 6, 1) + "";
+        String result = instance.checkRatingExist(menteeID, mentorID) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testCheckRatingExist2() {
+        System.out.println("checkRatingExist2");
+        int menteeID = 6;
+        int mentorID = -1;
+        DAO instance = new DAO();
+        String expResult = null + "";
+        String result = instance.checkRatingExist(menteeID, mentorID) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testCheckRatingExist3() {
+        System.out.println("checkRatingExist3");
+        int menteeID = -1;
+        int mentorID = 1;
+        DAO instance = new DAO();
+        String expResult = null + "";
+        String result = instance.checkRatingExist(menteeID, mentorID) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testCheckRatingExist4() {
+        System.out.println("checkRatingExist4");
+        int menteeID = -1;
+        int mentorID = -1;
+        DAO instance = new DAO();
+        String expResult = null + "";
         String result = instance.checkRatingExist(menteeID, mentorID) + "";
         assertEquals(expResult, result);
     }
@@ -210,5 +328,49 @@ public class DAOTest {
         String result = instance.getMentorByUID(uid) + "";
         assertEquals(expResult, result);
     }
-
+    
+    @Test
+    public void testUpdateNewPassword1() {
+        System.out.println("updateNewPassword1");
+        String newpass = "1234";
+        int uid = 0;
+        DAO instance = new DAO();
+        String expResult = "true";
+        String result = instance.updateNewPassword(newpass, uid) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testUpdateNewPassword2() {
+        System.out.println("updateNewPassword2");
+        String newpass = null;
+        int uid = 0;
+        DAO instance = new DAO();
+        String expResult = "false";
+        String result = instance.updateNewPassword(newpass, uid) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testUpdateNewPassword3() {
+        System.out.println("updateNewPassword3");
+        String newpass = "1234";
+        int uid = -1;
+        DAO instance = new DAO();
+        String expResult = "false";
+        String result = instance.updateNewPassword(newpass, uid) + "";
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testUpdateNewPassword4() {
+        System.out.println("updateNewPassword4");
+        String newpass = null ;
+        int uid = 0;
+        DAO instance = new DAO();
+        String expResult = "false";
+        String result = instance.updateNewPassword(newpass, uid) + "";
+        assertEquals(expResult, result);
+    }
+    
 }

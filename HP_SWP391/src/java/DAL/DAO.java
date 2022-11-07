@@ -296,7 +296,7 @@ public class DAO {
     }
 
     public void approveRequest(String requestID) {
-        String sql = "update Request set status='1', mentorStatus = '0' where requestID = ?";
+        String sql = "update Request set status='2', mentorStatus = '0' where requestID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, requestID);
@@ -306,7 +306,27 @@ public class DAO {
     }
 
     public void denyRequest(String requestID) {
-        String sql = "update Request set status='2', mentorStatus = '2' where requestID = ?";
+        String sql = "update Request set status='1', mentorStatus = '2' where requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, requestID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void acceptRequest(String requestID) {
+        String sql = "update Request set mentorStatus='1' where requestID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, requestID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void rejectRequest(String requestID) {
+        String sql = "update Request set mentorStatus='2' where requestID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, requestID);
@@ -682,7 +702,7 @@ public class DAO {
     }
 
     public int mentorCanceledReq(int mentorID) {
-        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 2 and mentorID = ?";
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 2 and status != 1 and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, mentorID);
@@ -697,7 +717,7 @@ public class DAO {
     }
 
     public int mentorTotalReq(int mentorID) {
-        String sql = "select COUNT(mentorStatus) from Request where [status] = 1 and mentorID = ?";
+        String sql = "select COUNT(mentorStatus) from Request where [status] = 2 and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, mentorID);

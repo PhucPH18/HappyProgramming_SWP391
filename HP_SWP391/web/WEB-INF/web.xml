@@ -140,6 +140,18 @@
         <servlet-name>UpdateCV</servlet-name>
         <servlet-class>Controller.UpdateCV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MentorRequest</servlet-name>
+        <servlet-class>Controller.MentorRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AcceptRequest</servlet-name>
+        <servlet-class>Controller.AcceptRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RejectRequest</servlet-name>
+        <servlet-class>Controller.RejectRequest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpControl</servlet-name>
         <url-pattern>/SignUpControl</url-pattern>
@@ -267,6 +279,18 @@
     <servlet-mapping>
         <servlet-name>UpdateCV</servlet-name>
         <url-pattern>/updateCV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MentorRequest</servlet-name>
+        <url-pattern>/MentorRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AcceptRequest</servlet-name>
+        <url-pattern>/AcceptRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RejectRequest</servlet-name>
+        <url-pattern>/RejectRequest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
