@@ -5,22 +5,18 @@
 package Controller;
 
 import DAL.DAO;
-import Model.MentorProfile;
-import Model.Request;
-import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
 /**
  *
- * @author DELL
+ * @author levuh
  */
-public class MentorControl extends HttpServlet {
+public class DeleteRating extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +30,10 @@ public class MentorControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MentorControl</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MentorControl at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        DAO dao = new DAO();
+        int rateID = Integer.parseInt(request.getParameter("rateID"));
+        dao.deleteRating(rateID);
+        request.getRequestDispatcher("manageRate").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,19 +48,7 @@ public class MentorControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        DAO dao = new DAO();
-        ArrayList<MentorProfile> listMP = new ArrayList<>();
-        for(MentorProfile mp : dao.getMentorProfile()){
-            if(mp.getMentorID()!=0){
-                listMP.add(mp);
-            }
-        }
-        ArrayList<User> listU = dao.getUser();
-        
-        request.setAttribute("listMP", listMP);
-        request.setAttribute("listU", listU);
-        request.getRequestDispatcher("ManageMentor.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

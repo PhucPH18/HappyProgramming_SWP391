@@ -49,16 +49,16 @@
         <header id="header" class="fixed-top">
             <div class="container d-flex align-items-center">
 
-                <h1 class="logo me-auto"><a href="HomePage.jsp">Happy Programming</a></h1>
+                <h1 class="logo me-auto"><a href="HomeControl">Happy Programming</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="HomePage.jsp" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
-                        <li><a class="active" href="home">Home</a></li>
-                        <li><a href="trainers.html">Trainers</a></li>
-
-                        <li><a href="contact.html">Contact</a></li>
+                        <!--<li><a class="active" href="home">Home</a></li>-->
+                        <!--                        <li><a href="trainers.html">Trainers</a></li>
+                        
+                                                <li><a href="contact.html">Contact</a></li>-->
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -188,7 +188,7 @@
                     <div class="row" data-aos="zoom-in" data-aos-delay="100">
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="member">
-                                <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                                <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.6435-9/100918565_1129332924115715_917140272641474560_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_ohc=_jVssqF5VTgAX_BFfZv&_nc_ht=scontent.fhan4-1.fna&oh=00_AfCbFnY71iZ2tXTJUUkIvJq7bkdH0mAahDaGzhVt1DogtQ&oe=639181AE" class="img-fluid" alt="">
                                 <div class="member-content">
                                     <h4>Le Vu Hieu</h4>
                                     <span>Fullstack Developer</span>
@@ -207,10 +207,11 @@
 
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="member">
-                                <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
+                                <img src="https://scontent.fhan3-4.fna.fbcdn.net/v/t1.6435-9/69087697_1091446437723634_8598457568051855360_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=174925&_nc_ohc=eoTbzXrNCjcAX_nIlYP&_nc_ht=scontent.fhan3-4.fna&oh=00_AfCnU_i-_ejWDPd-jDkaA0vpnHJ60RbfCEdgvZaIW7LcAg&oe=6391DB4D" 
+                                     class="img-fluid" alt="">
                                 <div class="member-content">
-                                    <h4>Sarah Jhinson</h4>
-                                    <span>Front-end Developer</span>
+                                    <h4>Hoang Gia Khanh</h4>
+                                    <span>Developer</span>
                                     <p>
                                         No one has ever said that learning is easy .Remove the word "easy" from your mind to be successful,
                                     </p>
@@ -226,10 +227,11 @@
 
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="member">
-                                <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                <img src="https://scontent.fhan4-3.fna.fbcdn.net/v/t1.6435-9/105915929_1194900747569119_4328530478202858643_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_ohc=K0W3Gk38Ng8AX8NrL3T&tn=7EXyLHIGpoGiL9cv&_nc_ht=scontent.fhan4-3.fna&oh=00_AfAA259Tw2kE5bfae5HInigHzdT6rqa7pquKvEMbe94KFQ&oe=6391F0BD"
+                                     class="img-fluid" alt="">
                                 <div class="member-content">
-                                    <h4>William Anderson</h4>
-                                    <span>Back-end Developer</span>
+                                    <h4>Trinh Dinh Khai</h4>
+                                    <span>SE Engineer</span>
                                     <p>
                                         One minute of good thought is better than a day of hard work.
                                     </p>

@@ -343,10 +343,10 @@ public class DAOTest {
     @Test
     public void testUpdateNewPassword2() {
         System.out.println("updateNewPassword2");
-        String newpass = null;
+        String newpass = "";
         int uid = 0;
         DAO instance = new DAO();
-        String expResult = "false";
+        String expResult = "true";
         String result = instance.updateNewPassword(newpass, uid) + "";
         assertEquals(expResult, result);
     }
@@ -365,8 +365,8 @@ public class DAOTest {
     @Test
     public void testUpdateNewPassword4() {
         System.out.println("updateNewPassword4");
-        String newpass = null ;
-        int uid = 0;
+        String newpass = "" ;
+        int uid = -1;
         DAO instance = new DAO();
         String expResult = "false";
         String result = instance.updateNewPassword(newpass, uid) + "";

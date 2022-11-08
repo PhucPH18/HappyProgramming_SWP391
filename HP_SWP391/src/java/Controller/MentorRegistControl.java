@@ -5,23 +5,18 @@
 package Controller;
 
 import DAL.DAO;
-import Model.SkillCategory;
-import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.sql.Date;
-import java.util.List;
 
 /**
  *
- * @author MSI KATANA
+ * @author DELL
  */
-public class Mentee_update extends HttpServlet {
+public class MentorRegistControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +35,10 @@ public class Mentee_update extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Mentee_update</title>");
+            out.println("<title>Servlet MentorRegist</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Mentee_update at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MentorRegist at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,14 +56,12 @@ public class Mentee_update extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        processRequest(request, response);
         DAO dao = new DAO();
-        List<SkillCategory> listS = dao.getSkillCategory();
-
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("active");
-        request.setAttribute("user", user);
-        request.setAttribute("listS", listS);
-        request.getRequestDispatcher("Mentee_update.jsp").forward(request, response);
+        request.setAttribute("listMR", dao.getMentorRegist());
+        request.setAttribute("listMP", dao.getMentorProfile());
+        request.setAttribute("listU", dao.getUser());
+        request.getRequestDispatcher("ManageMentorRegist.jsp").forward(request, response);
     }
 
     /**
@@ -82,28 +75,7 @@ public class Mentee_update extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DAO dao = new DAO();
-        int id = Integer.parseInt(request.getParameter("kid"));
-        String UserName = request.getParameter("UserName");
-        String Password = request.getParameter("Password");
-        String Fullname = request.getParameter("Fullname");
-        boolean Gender = request.getParameter("Gender").equals("1");
-        String Phone = request.getParameter("Phone");
-        String Email = request.getParameter("Email");
-        Date dob = Date.valueOf(request.getParameter("Dob"));
-        String Address = request.getParameter("Address");
-        boolean Status = request.getParameter("Status").equals("1");
-        int role = Integer.parseInt(request.getParameter("role"));
-
-        dao.updateUser(id, UserName, Password, Fullname, Gender, Phone, Email, dob, Address, Status, role);
-
-        HttpSession ses = request.getSession();
-        ses.removeAttribute("active");
-        ses.setAttribute("active", dao.getUserByID(id));
-        ses.setAttribute("alert", "Update successfully!");
-        if(dao.getUserByID(id).getRole() == 0) response.sendRedirect("Admin.jsp");
-        if(dao.getUserByID(id).getRole() == 2) response.sendRedirect("staticReq");
-        if(dao.getUserByID(id).getRole() == 3) response.sendRedirect("mentee");
+        processRequest(request, response);
     }
 
     /**

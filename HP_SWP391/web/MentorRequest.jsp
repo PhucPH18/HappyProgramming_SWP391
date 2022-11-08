@@ -114,10 +114,19 @@
                                                             <a href="RejectRequest?requestID=${o.requestID}"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Reject</button></a>
                                                         </td>
                                                     </c:if>
-                                                    <c:if test="${o.mentorStatus!=0}">
+                                                    <c:if test="${o.mentorStatus==1}">
+                                                        <td>
+                                                            <a href="RejectRequest?requestID=${o.requestID}"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Reject</button></a>
+                                                        </td>
+                                                    </c:if>
+                                                    <c:if test="${o.mentorStatus==2}">
+                                                        <td>
+                                                            <a href="AcceptRequest?requestID=${o.requestID}"><button type="button" class="btn btn-success btn-rounded btn-sm my-0">Accept</button></a>
+                                                        </td>
+                                                    </c:if>
+                                                    <c:if test="${o.mentorStatus==3}">
                                                         <td></td>
                                                     </c:if>
-                                                        
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

@@ -41,26 +41,34 @@
 
             <jsp:include page="Sidebar.jsp"></jsp:include>
 
-            <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Content Wrapper -->
+                <div id="content-wrapper" class="d-flex flex-column">
 
-                <!-- Main Content -->
-                <div id="content">
+                    <!-- Main Content -->
+                    <div id="content">
 
                     <jsp:include page="Topbar.jsp"></jsp:include>
 
-                    <div class="row gutters-sm">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="${mp.avatar}" alt="Avatar" class="rounded-circle" width="150">
+                        <div class="row gutters-sm">
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-column align-items-center text-center">
+                                            <img src="${mp.avatar}" alt="Avatar" class="rounded-circle" width="150">
                                         <div class="mt-3">
                                             <h4>${user.fullname}</h4>
                                             <p style="font-weight: bold">${mp.profession}</p>
                                             <p class="text-secondary mb-1">${mp.introduction}</p>
                                             <p class="text-muted font-size-sm">${user.address}</p>
-                                            <button class="btn btn-primary"><a style="color: white; text-decoration: none" href="CreateRequest">Request</a></button>
+
+                                            <c:if test="${active.role == 3}">
+                                                <button class="btn btn-primary"><a style="color: white; text-decoration: none" href="CreateRequest">Request</a></button>
+                                            </c:if>
+
+                                            <c:if test="${active.role == 0}">
+                                                <button class="btn btn-primary"><a style="color: white; text-decoration: none" href="ApproveMentorRegist?menteeID=${mp.userID}">Approve</a></button>
+                                                <button class="btn btn-primary" style="background-color: red"><a style="color: white; text-decoration: none" href="RejectMentorRegist?menteeID=${mp.userID}">Reject</a></button>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>

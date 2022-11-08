@@ -154,7 +154,7 @@ public class UpdateCV extends HttpServlet {
         if (skillID1 != skillID2 && skillID2 != skillID3 && skillID3 != skillID1) {
             dao.updateMentorRegist(mrID, uid, Date.valueOf(java.time.LocalDate.now()), 0);
             dao.updateCV(mentorID, uid, avatar, prof, intro, lnkdin, github);
-            dao.updateMentorSkill(6, mentorID, 3, yoe1, desc1);
+            dao.updateMentorSkill(msID1, mentorID, skillID1, yoe1, desc1);
             dao.updateMentorSkill(msID2, mentorID, skillID2, yoe2, desc2);
             dao.updateMentorSkill(msID3, mentorID, skillID3, yoe3, desc3);
             request.setAttribute("alert", "Your CV form has been updated!");

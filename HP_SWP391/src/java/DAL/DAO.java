@@ -314,7 +314,7 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-    
+
     public void acceptRequest(String requestID) {
         String sql = "update Request set mentorStatus='1' where requestID = ?";
         try {
@@ -324,7 +324,7 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-    
+
     public void rejectRequest(String requestID) {
         String sql = "update Request set mentorStatus='2' where requestID = ?";
         try {
@@ -686,7 +686,7 @@ public class DAO {
         return null;
     }
 
-    public int mentorAcceptedReq(int mentorID) {
+    public int mentorOnGoingReq(int mentorID) {
         String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 1 and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -716,8 +716,8 @@ public class DAO {
         return 0;
     }
 
-    public int mentorTotalReq(int mentorID) {
-        String sql = "select COUNT(mentorStatus) from Request where [status] = 2 and mentorID = ?";
+    public int mentorCompletedReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3 and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, mentorID);
@@ -731,8 +731,8 @@ public class DAO {
         return 0;
     }
 
-    public int mentorCompletedReq(int mentorID) {
-        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3 and mentorID = ?";
+    public int mentorTotalReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where [status] = 2 and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, mentorID);
@@ -860,7 +860,7 @@ public class DAO {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public void updateCV(int mentorID, int uid, String avatar, String prof, String intro,
             String lnkedin, String github) {
         String sql = "update MentorProfile set userID = ?, avatar = ?, introduction = ?, LinkedIn = ?,"
@@ -879,7 +879,6 @@ public class DAO {
             System.out.println(e.getMessage());
         }
     }
-    
 
     public void addMentorSkills(int msID, int mentorID, int skillID, int yoe, String desc) {
         String sql = "insert into MentorSkill values (?,?,?,?,?)";
@@ -896,7 +895,7 @@ public class DAO {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public void updateMentorSkill(int msID, int mentorID, int skillID, int yoe, String desc) {
         String sql = "update MentorSkill set mentorID = ?, skillID = ?, yearsOfExp = ?,"
                 + " description = ? where mentorSkillID = ?";
@@ -923,6 +922,46 @@ public class DAO {
         }
         for (MentorSkill m : msList) {
             System.out.println(m);
+        }
+    }
+
+    public void approveMentorRegist(int menteeID) {
+        String sql1 = "update MentorRegist set status='2' where menteeID = ?";
+        String sql2 = "update [User] set role='2' where ID = ?";
+        try {
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, menteeID);
+            ps1.executeUpdate();
+
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, menteeID);
+            ps2.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void rejectMentorRegist(int menteeID) {
+        String sql1 = "update MentorRegist set status='1' where menteeID = ?";
+        String sql2 = "update [User] set role='3' where ID = ?";
+        try {
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, menteeID);
+            ps1.executeUpdate();
+
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, menteeID);
+            ps2.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void deleteRating(int rateID) {
+        String sql = "Delete from Rating where rateID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, rateID);
+            ps.executeUpdate();
+        } catch (Exception e) {
         }
     }
 }

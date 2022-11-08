@@ -48,9 +48,15 @@
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href="MentorControl">
+            <a class="nav-link" href="MentorRegistControl">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Mentor</span></a>
+                <span>Mentor Regist</span></a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="manageRate">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Rating</span></a>
         </li>
 
         <!-- Divider -->
