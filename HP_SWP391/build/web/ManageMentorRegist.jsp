@@ -50,12 +50,12 @@
 
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
-                            <h1 class="h3 mb-2 text-gray-800">Manage User</h1>
+                            <h1 class="h3 mb-2 text-gray-800">Manage Mentor Regist</h1>
 
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">List of Skills</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">List of Mentor Regist</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -65,42 +65,35 @@
                                                     <th>ID</th>
                                                     <th>Username</th>
                                                     <th>Fullname</th>
-                                                    <th>Currently accepted request</th>
-                                                    <th>Percentage complete</th>
-                                                    <th>Rate star</th>
-                                                    <th>Edit</th>
+                                                    <th>Date</th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${listMP}" var="mp">
+                                            <c:forEach items="${listMR}" var="mr">
                                                 <tr>
-                                                    <td>${mp.mentorID}</td>
+                                                    <td>${mr.registID}</td>
                                                     <c:forEach items="${listU}" var="u">
-                                                        <c:if test="${mp.userID==u.userID}">
+                                                        <c:if test="${mr.menteeID==u.userID}">
                                                             <td>${u.username}</td>
-                                                            <td>${u.fullname}</td>
+                                                            <c:forEach items="${listMP}" var="mp" >
+                                                                <c:if test="${mp.userID==u.userID}">
+                                                                    <td><a style="color: #009c68;font-weight: bold" href="MPControl?mentorID=${mp.mentorID}">${u.fullname}</a></td>
+                                                                </c:if>
+                                                            </c:forEach>
                                                         </c:if>
                                                     </c:forEach>
-                                                    <td>${l.status?"Active":"Inactive"}</td>
-                                                    <c:if test="${l.role == 0}">
-                                                        <td>Admin</td>
+                                                    <td>${mr.date}</td>
+                                                    
+                                                    <c:if test="${mr.status==0}">
+                                                        <td style="color: blue">Waiting</td>
                                                     </c:if>
-                                                    <c:if test="${l.role == 1}">
-                                                        <td>Staff</td>
+                                                    <c:if test="${mr.status==1}">
+                                                        <td style="color: red">Rejected</td>
                                                     </c:if>
-                                                    <c:if test="${l.role == 2}">
-                                                        <td>Mentor</td>
+                                                    <c:if test="${mr.status==2}">
+                                                        <td style="color: green">Approved</td>
                                                     </c:if>
-                                                    <c:if test="${l.role == 3}">
-                                                        <td>Mentee</td>
-                                                    </c:if>
-
-                                                    <td> <a href="User_update?kid=${l.userID}"><i
-                                                                class="fas fa-address-book"></i>
-                                                        </a>
-                                                        <a href="User_delete?kid=${l.userID}" 
-                                                           onclick="if (!(confirm('Delete this user?')))
-                                                                       return false"><i class="fas fa-trash" style="color: #ff3333"></i></a></td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

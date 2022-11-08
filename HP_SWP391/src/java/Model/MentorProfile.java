@@ -16,7 +16,6 @@ public class MentorProfile {
     private String linkedIn;
     private String gitHub;
     private String profession;
-    private String name;
 
     public MentorProfile() {
     }
@@ -29,25 +28,6 @@ public class MentorProfile {
         this.linkedIn = linkedIn;
         this.gitHub = gitHub;
         this.profession = profession;
-    }
-
-    public MentorProfile(int mentorID, int userID, String avatar, String introduction, String linkedIn, String gitHub, String profession, String name) {
-        this.mentorID = mentorID;
-        this.userID = userID;
-        this.avatar = avatar;
-        this.introduction = introduction;
-        this.linkedIn = linkedIn;
-        this.gitHub = gitHub;
-        this.profession = profession;
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getMentorID() {

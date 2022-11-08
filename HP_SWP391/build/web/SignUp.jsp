@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="form-input" style="text-align: center;margin-top: 50px;font-size: 23px">
                                         Already have an account ?<a href="login.jsp"> Sign In</a><br>
-                                        Or return to <a href="HomePage.jsp">Home Page</a>
+                                        Or return to <a href="HomeControl">Home Page</a>
                                     </div>
                                 </div>
                             </div>

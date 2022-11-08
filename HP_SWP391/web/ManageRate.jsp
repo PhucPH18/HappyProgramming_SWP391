@@ -63,8 +63,8 @@
                                                     <th>ID</th>
                                                     <th>Comment</th>
                                                     <th>Star</th>
-                                                    <th>MenteeID</th>
-                                                    <th>MentorID</th>
+                                                    <th>Mentee</th>
+                                                    <th>Mentor</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -74,8 +74,24 @@
                                                     <td>${o.rateID}</td>
                                                     <td>${o.comment}</td>
                                                     <td>${o.star}</td>
-                                                    <td>${o.menteeID}</td>
-                                                    <td>${o.mentorID}</td>
+
+                                                    <c:forEach items="${listU}" var="u">
+                                                        <c:if test="${u.userID == o.menteeID}">
+                                                            <td>${u.fullname}</td>
+                                                        </c:if>
+                                                    </c:forEach>
+
+
+                                                    <c:forEach items="${listMP}" var="mp">
+                                                        <c:if test="${o.mentorID == mp.mentorID}">
+                                                            <c:forEach items="${listU}" var="u">
+                                                                <c:if test="${u.userID == mp.userID}">
+                                                                    <td>${u.fullname}</td>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </c:if>
+                                                    </c:forEach>
+
                                                     <td><a href="deleteRating?rateID=${o.rateID}" 
                                                            onclick="if (!(confirm('Delete this rating?')))
                                                                        return false"><i class="fas fa-trash" style="color: #ff3333"></i></a></td>

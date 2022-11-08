@@ -26,19 +26,25 @@ public class StaticReqController extends HttpServlet {
             }
         }
 
-        int acceptedReq = dao.mentorAcceptedReq(id);
+        int onGoingReq = dao.mentorOnGoingReq(id);
         int canceledReq = dao.mentorCanceledReq(id);
         int invitedReq = dao.mentorTotalReq(id);
         int completedReq = dao.mentorCompletedReq(id);
-
+        
+        float perOfCancelReq = 0;
+        float perOfComReq = 0;
+        
         float f = 102.236569f;
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        float perOfCancelReq = Float.valueOf(decimalFormat.format((float) canceledReq / invitedReq * 100));
-        float perOfComReq = Float.valueOf(decimalFormat.format((float) completedReq / invitedReq * 100));
+
+        if (invitedReq != 0) {
+            perOfCancelReq = Float.valueOf(decimalFormat.format((float) canceledReq / invitedReq * 100));
+            perOfComReq = Float.valueOf(decimalFormat.format((float) completedReq / invitedReq * 100));
+        }
 
         request.setAttribute("perOfCancelReq", perOfCancelReq);
         request.setAttribute("perOfComReq", perOfComReq);
-        request.setAttribute("acceptedReq", acceptedReq);
+        request.setAttribute("acceptedReq", onGoingReq);
         request.setAttribute("invitedReq", invitedReq);
         request.setAttribute("canceledReq", canceledReq);
         request.setAttribute("completedReq", completedReq);

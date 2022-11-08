@@ -5,22 +5,19 @@
 package Controller;
 
 import DAL.DAO;
-import Model.MentorProfile;
-import Model.Request;
-import Model.User;
+import Model.MentorRegist;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
 /**
  *
  * @author DELL
  */
-public class MentorControl extends HttpServlet {
+public class RejectMentorRegist extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +36,10 @@ public class MentorControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MentorControl</title>");            
+            out.println("<title>Servlet RejectMentorRegist</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet MentorControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RejectMentorRegist at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,19 +57,10 @@ public class MentorControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
         DAO dao = new DAO();
-        ArrayList<MentorProfile> listMP = new ArrayList<>();
-        for(MentorProfile mp : dao.getMentorProfile()){
-            if(mp.getMentorID()!=0){
-                listMP.add(mp);
-            }
-        }
-        ArrayList<User> listU = dao.getUser();
-        
-        request.setAttribute("listMP", listMP);
-        request.setAttribute("listU", listU);
-        request.getRequestDispatcher("ManageMentor.jsp").forward(request, response);
+        int menteeID = Integer.parseInt(request.getParameter("menteeID"));
+        dao.rejectMentorRegist(menteeID);
+        response.sendRedirect("MentorRegistControl");
     }
 
     /**

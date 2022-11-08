@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT%20University/FALL%202022/SWP391/New%20folder/HP_SWP391/src/java/Controller/HomeControl.java</file>
-            <file>file:/D:/FPT%20University/FALL%202022/SWP391/New%20folder/HP_SWP391/web/MentorProfile.jsp</file>
-            <file>file:/D:/FPT%20University/FALL%202022/SWP391/New%20folder/HP_SWP391/web/HomePage.jsp</file>
-            <file>file:/D:/FPT%20University/FALL%202022/SWP391/New%20folder/HP_SWP391/src/java/DAL/DAO.java</file>
-            <file>file:/D:/FPT%20University/FALL%202022/SWP391/New%20folder/HP_SWP391/src/java/Model/MentorProfile.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/StaticReqController.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/RejectMentorRegist.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/staticRequest.jsp</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/MentorRegistControl.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/MentorProfile.jsp</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/AdminPage.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/DAL/DAO.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/src/java/Controller/ApproveMentorRegist.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/ManageMentorRegist.jsp</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documents/GitHub/HappyProgramming_SWP391/HP_SWP391/web/Mentee.jsp</file>
         </group>
     </open-files>
 </project-private>

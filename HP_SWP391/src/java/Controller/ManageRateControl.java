@@ -36,9 +36,11 @@ public class ManageRateControl extends HttpServlet {
         DAO dao = new DAO();
         List<Rating> listR = new ArrayList<>();
         for (Rating r : dao.getRating()) {
-                listR.add(r);
+            listR.add(r);
         }
 
+        request.setAttribute("listU", dao.getUser());
+        request.setAttribute("listMP", dao.getMentorProfile());
         request.setAttribute("listR", listR);
         request.getRequestDispatcher("ManageRate.jsp").forward(request, response);
     }

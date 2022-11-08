@@ -54,7 +54,7 @@
                                             </i>Register as mentor</button>
                                     </a>
                                 </c:if>
-                                
+
                                 <c:if test="${mrList.size()!=0}">
                                     <a href="updateCV">
                                         <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;
@@ -111,10 +111,10 @@
                                                         </c:if>
                                                     </c:forEach>
 
-                                                    <c:if test="${o.link.length() != 0}">
+                                                    <c:if test="${o.link.length() != 0 && o.link != null}">
                                                         <td><a style="color: #009c68;font-weight: bold" href="${o.link}">Join</a></td>
                                                     </c:if>
-                                                    <c:if test="${o.link.length() == 0}">
+                                                    <c:if test="${o.link.length() == 0 || o.link == null}">
                                                         <td><a style="color: #009c68;font-weight: bold" href="UpdateRequest?rid=${o.requestID}">Add</a></td>
                                                     </c:if>
 
@@ -148,64 +148,65 @@
                                                     <c:if test="${o.mentorStatus==1}">
                                                         <td><a  style="color: #009c68;font-weight: bold" href="FinishRequest?requestID=${o.requestID}"
                                                                 data-toggle="modal" data-target="#finishModal">Finish</a></td>
-                                                        </c:if>
-                                                        <c:if test="${o.mentorStatus==2}">
-                                                        <td></td>
-                                                    </c:if>
-                                                    <c:if test="${o.mentorStatus==3}">
-                                                        <td><a  style="color: #009c68;font-weight: bold" href="rating?mentorID=${o.mentorID}">Rate</a></td>
-                                                    </c:if>
-
-                                                    <td> <a href="UpdateRequest?rid=${o.requestID}"><i
-                                                                class="fas fa-address-book"></i>
-                                                        </a>
-                                                        <a href="DeleteRequest?rid=${o.requestID}" data-toggle="modal" data-target="#deleteModal">
-                                                            <i class="fas fa-trash" style="color: #ff3333"></i>
-                                                        </a>
-
-                                                        <!-- Delete Modal-->
-                                                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Confirm massage</h5>
-                                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">×</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">Are you sure you want to delete this request?</div>
-                                                                    <div class="modal-footer">
-                                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                        <a class="btn btn-primary" href="DeleteRequest?rid=${o.requestID}">Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
                                                         <!-- Finish Modal-->
-                                                        <div class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Confirm massage</h5>
-                                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">×</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">Are you sure you want to finish this request?</div>
-                                                                    <div class="modal-footer">
-                                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                        <a class="btn btn-primary" href="FinishRequest?requestID=${o.requestID}">Finish</a>
-                                                                    </div>
-                                                                </div>
+                                                <div class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                     aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Confirm massage</h5>
+                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">Are you sure you want to finish this request?</div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                <a class="btn btn-primary" href="FinishRequest?requestID=${o.requestID}">Finish</a>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${o.mentorStatus==2}">
+                                                <td></td>
+                                            </c:if>
+                                            <c:if test="${o.mentorStatus==3}">
+                                                <td><a  style="color: #009c68;font-weight: bold" href="rating?mentorID=${o.mentorID}">Rate</a></td>
+                                            </c:if>
 
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
+                                            <td> <a href="UpdateRequest?rid=${o.requestID}"><i
+                                                        class="fas fa-address-book"></i>
+                                                </a>
+                                                <a href="DeleteRequest?rid=${o.requestID}" data-toggle="modal" data-target="#deleteModal">
+                                                    <i class="fas fa-trash" style="color: #ff3333"></i>
+                                                </a>
+
+                                                <!-- Delete Modal-->
+                                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                     aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Confirm massage</h5>
+                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">Are you sure you want to delete this request?</div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                <a class="btn btn-primary" href="DeleteRequest?rid=${o.requestID}">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

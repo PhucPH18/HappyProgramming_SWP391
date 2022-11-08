@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="form-input" style="text-align: center;margin-top: 50px;font-size: 23px">
                                     Do not have an account?<a href="SignUp.jsp"> Sign Up    </a><br>
-                                    Or return to <a href="HomePage.jsp">Home Page</a>
+                                    Or return to <a href="HomeControl">Home Page</a>
                                 </div>
                             </form>
 

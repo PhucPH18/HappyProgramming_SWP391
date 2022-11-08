@@ -686,7 +686,7 @@ public class DAO {
         return null;
     }
 
-    public int mentorAcceptedReq(int mentorID) {
+    public int mentorOnGoingReq(int mentorID) {
         String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 1 and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -716,8 +716,8 @@ public class DAO {
         return 0;
     }
 
-    public int mentorTotalReq(int mentorID) {
-        String sql = "select COUNT(mentorStatus) from Request where [status] = 2 and mentorID = ?";
+    public int mentorCompletedReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3 and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, mentorID);
@@ -731,8 +731,8 @@ public class DAO {
         return 0;
     }
 
-    public int mentorCompletedReq(int mentorID) {
-        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3 and mentorID = ?";
+    public int mentorTotalReq(int mentorID) {
+        String sql = "select COUNT(mentorStatus) from Request where [status] = 2 and mentorID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, mentorID);
@@ -790,132 +790,6 @@ public class DAO {
     }
 
     public int getTotalSkill() {
-        String sql = "select COUNT(status) from SkillCategory where [status] = 1";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getPendingReq() {
-        String sql = "select COUNT(status) from Request where [status] = 0";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getAdDeniedReq() {
-        String sql = "select COUNT(status) from Request where [status] = 1";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getIPReq() {
-        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 1";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getCompletedReq() {
-        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getAdTotalReq() {
-        String sql = "select COUNT(status) from Request";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getTotalAcc() {
-        String sql = "select COUNT(status) from [User]";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getActiveAcc() {
-        String sql = "select COUNT(status) from [User] where [status] = 1";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getDashSkill() {
-        String sql = "select COUNT(status) from SkillCategory";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-            status = "Error at read Request" + e.getMessage();
-        }
-        return 0;
-    }
-
-    public int getActiveSkill() {
         String sql = "select COUNT(status) from SkillCategory where [status] = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -1038,6 +912,49 @@ public class DAO {
         }
     }
 
+    public static void main(String[] args) {
+        DAO dao = new DAO();
+        ArrayList<MentorSkill> msList = new ArrayList<>();
+        for (MentorSkill m : dao.getMentorSkill()) {
+            if (m.getMentorID() == 3) {
+                msList.add(m);
+            }
+        }
+        for (MentorSkill m : msList) {
+            System.out.println(m);
+        }
+    }
+
+    public void approveMentorRegist(int menteeID) {
+        String sql1 = "update MentorRegist set status='2' where menteeID = ?";
+        String sql2 = "update [User] set role='2' where ID = ?";
+        try {
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, menteeID);
+            ps1.executeUpdate();
+
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, menteeID);
+            ps2.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void rejectMentorRegist(int menteeID) {
+        String sql1 = "update MentorRegist set status='1' where menteeID = ?";
+        String sql2 = "update [User] set role='3' where ID = ?";
+        try {
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, menteeID);
+            ps1.executeUpdate();
+
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, menteeID);
+            ps2.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
     public void deleteRating(int rateID) {
         String sql = "Delete from Rating where rateID = ?";
         try {
@@ -1047,12 +964,4 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-    
-//    public static void main(String[] args) {
-//        DAO dao = new DAO();
-//        ArrayList<MentorProfile> msList = dao.getTop3Mentor();
-//        for (MentorProfile o : msList) {
-//            System.out.println(o);
-//        }
-//    }
 }

@@ -153,6 +153,18 @@
         <servlet-class>Controller.RejectRequest</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>MentorRegistControl</servlet-name>
+        <servlet-class>Controller.MentorRegistControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApproveMentorRegist</servlet-name>
+        <servlet-class>Controller.ApproveMentorRegist</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RejectMentorRegist</servlet-name>
+        <servlet-class>Controller.RejectMentorRegist</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ManageRateControl</servlet-name>
         <servlet-class>Controller.ManageRateControl</servlet-class>
     </servlet>
@@ -299,6 +311,18 @@
     <servlet-mapping>
         <servlet-name>RejectRequest</servlet-name>
         <url-pattern>/RejectRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MentorRegistControl</servlet-name>
+        <url-pattern>/MentorRegistControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveMentorRegist</servlet-name>
+        <url-pattern>/ApproveMentorRegist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RejectMentorRegist</servlet-name>
+        <url-pattern>/RejectMentorRegist</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManageRateControl</servlet-name>

@@ -94,7 +94,7 @@ public class Login extends HttpServlet {
             HttpSession ses = request.getSession();
             ses.setAttribute("active", u);
             if (u.getRole() == 0) {
-                response.sendRedirect("admin");
+                response.sendRedirect("Admin.jsp");
             }
             if (u.getRole() == 3) {
                 response.sendRedirect("mentee");

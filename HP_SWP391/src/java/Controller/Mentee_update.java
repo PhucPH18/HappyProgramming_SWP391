@@ -101,7 +101,9 @@ public class Mentee_update extends HttpServlet {
         ses.removeAttribute("active");
         ses.setAttribute("active", dao.getUserByID(id));
         ses.setAttribute("alert", "Update successfully!");
-        response.sendRedirect("mentee");
+        if(dao.getUserByID(id).getRole() == 0) response.sendRedirect("Admin.jsp");
+        if(dao.getUserByID(id).getRole() == 2) response.sendRedirect("staticReq");
+        if(dao.getUserByID(id).getRole() == 3) response.sendRedirect("mentee");
     }
 
     /**
