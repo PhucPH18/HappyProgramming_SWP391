@@ -68,7 +68,7 @@
                                                     <th>Gender</th>
                                                     <th>Phone</th>
                                                     <th>Email</th>
-                                                    <th>Date of birth</th>
+                                                    <th>DoB</th>
                                                     <th>Address</th>
                                                     <th>Status</th>
                                                     <th>Role</th>

@@ -55,10 +55,10 @@
 
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
-                        <li><a class="active" href="home">Home</a></li>
-                        <li><a href="trainers.html">Trainers</a></li>
+                        <!--<li><a class="active" href="home">Home</a></li>-->
+<!--                        <li><a href="trainers.html">Trainers</a></li>
 
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>-->
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -188,9 +188,9 @@
                     <div class="row" data-aos="zoom-in" data-aos-delay="100">
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="member">
-                                <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                                <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.6435-9/100918565_1129332924115715_917140272641474560_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_ohc=_jVssqF5VTgAX_BFfZv&_nc_ht=scontent.fhan4-1.fna&oh=00_AfCbFnY71iZ2tXTJUUkIvJq7bkdH0mAahDaGzhVt1DogtQ&oe=639181AE" class="img-fluid" alt="">
                                 <div class="member-content">
-                                    <h4>Le Vu Hieu</h4>
+                                    <h4>Lê Vũ Hiếu</h4>
                                     <span>Fullstack Developer</span>
                                     <p>
                                         Today's failure is tomorrow's victory.
@@ -207,9 +207,10 @@
 
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="member">
-                                <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
+                                <img src="https://scontent.fhan3-3.fna.fbcdn.net/v/t1.18169-9/11822537_393313084203643_7452766484174274483_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=H_-a9FjJCAQAX_NKeb5&_nc_ht=scontent.fhan3-3.fna&oh=00_AfBq1ZQNM29vrX2LmjT4HEYsCnuqac0cSBDNSXgtJzI5IA&oe=63918621" 
+                                     class="img-fluid" alt="">
                                 <div class="member-content">
-                                    <h4>Sarah Jhinson</h4>
+                                    <h4>Hoàng Gia Khánh</h4>
                                     <span>Front-end Developer</span>
                                     <p>
                                         No one has ever said that learning is easy .Remove the word "easy" from your mind to be successful,
@@ -226,9 +227,10 @@
 
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="member">
-                                <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                <img src="https://scontent.fhan4-3.fna.fbcdn.net/v/t1.6435-9/123338444_187063459571956_1133114274719977888_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_ohc=9gnT6vqkC1kAX_3n6vw&tn=Fub_SR_T709wFoCH&_nc_ht=scontent.fhan4-3.fna&oh=00_AfCzNAthY3T8vRNBAZxZJCZpPjR9zZNIu4mXRtfaW1a1PQ&oe=63917C14"
+                                     class="img-fluid" alt="">
                                 <div class="member-content">
-                                    <h4>William Anderson</h4>
+                                    <h4>Bùi Hoàng Việt</h4>
                                     <span>Back-end Developer</span>
                                     <p>
                                         One minute of good thought is better than a day of hard work.

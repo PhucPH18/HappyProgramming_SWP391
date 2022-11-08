@@ -52,6 +52,12 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Mentor</span></a>
         </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="manageRate">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Rate</span></a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

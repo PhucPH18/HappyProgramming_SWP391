@@ -314,7 +314,7 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-    
+
     public void acceptRequest(String requestID) {
         String sql = "update Request set mentorStatus='1' where requestID = ?";
         try {
@@ -324,7 +324,7 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-    
+
     public void rejectRequest(String requestID) {
         String sql = "update Request set mentorStatus='2' where requestID = ?";
         try {
@@ -802,7 +802,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getPendingReq() {
         String sql = "select COUNT(status) from Request where [status] = 0";
         try {
@@ -816,7 +816,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getAdDeniedReq() {
         String sql = "select COUNT(status) from Request where [status] = 1";
         try {
@@ -830,7 +830,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getIPReq() {
         String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 1";
         try {
@@ -844,7 +844,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getCompletedReq() {
         String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3";
         try {
@@ -858,7 +858,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getAdTotalReq() {
         String sql = "select COUNT(status) from Request";
         try {
@@ -872,7 +872,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getTotalAcc() {
         String sql = "select COUNT(status) from [User]";
         try {
@@ -886,7 +886,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getActiveAcc() {
         String sql = "select COUNT(status) from [User] where [status] = 1";
         try {
@@ -900,7 +900,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getDashSkill() {
         String sql = "select COUNT(status) from SkillCategory";
         try {
@@ -914,7 +914,7 @@ public class DAO {
         }
         return 0;
     }
-    
+
     public int getActiveSkill() {
         String sql = "select COUNT(status) from SkillCategory where [status] = 1";
         try {
@@ -986,7 +986,7 @@ public class DAO {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public void updateCV(int mentorID, int uid, String avatar, String prof, String intro,
             String lnkedin, String github) {
         String sql = "update MentorProfile set userID = ?, avatar = ?, introduction = ?, LinkedIn = ?,"
@@ -1005,7 +1005,6 @@ public class DAO {
             System.out.println(e.getMessage());
         }
     }
-    
 
     public void addMentorSkills(int msID, int mentorID, int skillID, int yoe, String desc) {
         String sql = "insert into MentorSkill values (?,?,?,?,?)";
@@ -1022,7 +1021,7 @@ public class DAO {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public void updateMentorSkill(int msID, int mentorID, int skillID, int yoe, String desc) {
         String sql = "update MentorSkill set mentorID = ?, skillID = ?, yearsOfExp = ?,"
                 + " description = ? where mentorSkillID = ?";
@@ -1039,16 +1038,21 @@ public class DAO {
         }
     }
 
-    public static void main(String[] args) {
-        DAO dao = new DAO();
-        ArrayList<MentorSkill> msList = new ArrayList<>();
-        for (MentorSkill m : dao.getMentorSkill()) {
-            if (m.getMentorID() == 3) {
-                msList.add(m);
-            }
-        }
-        for (MentorSkill m : msList) {
-            System.out.println(m);
+    public void deleteRating(int rateID) {
+        String sql = "Delete from Rating where rateID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, rateID);
+            ps.executeUpdate();
+        } catch (Exception e) {
         }
     }
+    
+//    public static void main(String[] args) {
+//        DAO dao = new DAO();
+//        ArrayList<MentorProfile> msList = dao.getTop3Mentor();
+//        for (MentorProfile o : msList) {
+//            System.out.println(o);
+//        }
+//    }
 }

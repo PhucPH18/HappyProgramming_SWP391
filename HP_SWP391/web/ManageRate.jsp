@@ -1,11 +1,4 @@
-<%-- 
-    Document   : ManageSkill
-    Created on : Oct 15, 2022, 11:06:21 PM
-    Author     : MSI KATANA
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>HP Admin - Manage Request</title>
+        <title>HP Admin - Manage Rating</title>
 
         <!-- Custom fonts for this template -->
         <link href="Hieu/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -50,12 +43,17 @@
 
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
-                            <h1 class="h3 mb-2 text-gray-800">Manage User</h1>
 
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-2 text-gray-800">Manage Rating</h1>
+                            <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                                For more information about DataTables, please visit the <a target="_blank"
+                                    href="https://datatables.net">official DataTables documentation</a>.</p>
+                            -->
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">List of Skills</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">List of rating</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -63,48 +61,23 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Username</th>
-                                                    <th>Fullname</th>
-                                                    <th>Gender</th>
-                                                    <th>Phone</th>
-                                                    <th>Email</th>
-                                                    <th>DoB</th>
-                                                    <th>Address</th>
-                                                    <th>Status</th>
-                                                    <th>Role</th>
-                                                    <th>Edit</th>
+                                                    <th>Comment</th>
+                                                    <th>Star</th>
+                                                    <th>MenteeID</th>
+                                                    <th>MentorID</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${listU}" var="l">
+                                            <c:forEach items="${listR}" var="o">
                                                 <tr>
-                                                    <td>${l.userID}</td>
-                                                    <td>${l.username}</td>
-                                                    <td>${l.fullname}</td>
-                                                    <td>${l.gender?"Male":"Female"}</td>
-                                                    <td>${l.phone}</td>
-                                                    <td>${l.email}</td>
-                                                    <td>${l.dob}</td>
-                                                    <td>${l.address}</td>
-                                                    <td>${l.status?"Active":"Inactive"}</td>
-                                                    <c:if test="${l.role == 0}">
-                                                        <td>Admin</td>
-                                                    </c:if>
-                                                    <c:if test="${l.role == 1}">
-                                                        <td>Staff</td>
-                                                    </c:if>
-                                                    <c:if test="${l.role == 2}">
-                                                        <td>Mentor</td>
-                                                    </c:if>
-                                                    <c:if test="${l.role == 3}">
-                                                        <td>Mentee</td>
-                                                    </c:if>
-
-                                                    <td> <a href="User_update?kid=${l.userID}"><i
-                                                                class="fas fa-address-book"></i>
-                                                        </a>
-                                                        <a href="User_delete?kid=${l.userID}" 
-                                                           onclick="if (!(confirm('Delete this user?')))
+                                                    <td>${o.rateID}</td>
+                                                    <td>${o.comment}</td>
+                                                    <td>${o.star}</td>
+                                                    <td>${o.menteeID}</td>
+                                                    <td>${o.mentorID}</td>
+                                                    <td><a href="deleteRating?rateID=${o.rateID}" 
+                                                           onclick="if (!(confirm('Delete this rating?')))
                                                                        return false"><i class="fas fa-trash" style="color: #ff3333"></i></a></td>
                                                 </tr>
                                             </c:forEach>
@@ -113,8 +86,10 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <!-- /.container-fluid -->
+
                 </div>
                 <!-- End of Main Content -->
 
@@ -161,4 +136,3 @@
     </body>
 
 </html>
-
