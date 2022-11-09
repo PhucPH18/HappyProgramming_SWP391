@@ -802,6 +802,132 @@ public class DAO {
         }
         return 0;
     }
+    
+    public int getPendingReq() {
+        String sql = "select COUNT(status) from Request where [status] = 0";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int getAdDeniedReq() {
+        String sql = "select COUNT(status) from Request where [status] = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int getIPReq() {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int getCompletedReq() {
+        String sql = "select COUNT(mentorStatus) from Request where mentorStatus = 3";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int getAdTotalReq() {
+        String sql = "select COUNT(status) from Request";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int getTotalAcc() {
+        String sql = "select COUNT(status) from [User]";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int getActiveAcc() {
+        String sql = "select COUNT(status) from [User] where [status] = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int getDashSkill() {
+        String sql = "select COUNT(status) from SkillCategory";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
+
+    public int getActiveSkill() {
+        String sql = "select COUNT(status) from SkillCategory where [status] = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            status = "Error at read Request" + e.getMessage();
+        }
+        return 0;
+    }
 
     public User checkOldPassword(int uID, String pass) {
         String sql = "select * from [User] where ID = ? and password = ?";
