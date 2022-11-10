@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>HP Mentor - Static Request</title>
+        <title>HP Mentor</title>
 
         <!-- Custom fonts for this template -->
         <link href="Hieu/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">

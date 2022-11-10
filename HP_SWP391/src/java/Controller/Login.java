@@ -85,7 +85,7 @@ public class Login extends HttpServlet {
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
         User u = dao.login(username, password);
-        if (u == null) {
+        if (u == null || u.isStatus()==false) {
             request.setAttribute("error", "Invalid Username or Password. Please try again.");
             RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.include(request, response);
